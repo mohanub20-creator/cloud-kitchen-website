@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>49 Parathas | Best Parathas in Sector 49 Noida</title>
+<meta name="description" content="49 Parathas – Fresh, hot & hygienic parathas delivered in Sector 49 Noida. Order directly on WhatsApp.">
+
+<style>
+body{font-family:'Segoe UI',Tahoma,Geneva,Verdana,sans-serif;margin:0;background:linear-gradient(135deg,#fff6ec,#ffe0b2);color:#333;line-height:1.6}
+header{background:linear-gradient(135deg,#6a1b9a,#9c27b0);color:#fff;padding:20px;text-align:center;position:relative;box-shadow:0 4px 8px rgba(0,0,0,0.1)}
+.toggle-lang{position:absolute;top:15px;right:15px;background:#fff;color:#6a1b9a;border:none;padding:8px 12px;border-radius:20px;cursor:pointer;font-size:13px;font-weight:500;transition:transform 0.2s}
+.toggle-lang:hover{transform:scale(1.05)}
+section{padding:20px;margin:10px;background:#fff;border-radius:12px;box-shadow:0 2px 10px rgba(0,0,0,0.05)}
+h2{margin-top:0;color:#6a1b9a;font-size:1.5em;text-align:center}
+.menu-item{display:flex;align-items:center;justify-content:space-between;background:#f9f9f9;padding:15px;border-radius:12px;margin:10px 0;transition:transform 0.2s,box-shadow 0.2s}
+.menu-item:hover{transform:translateY(-2px);box-shadow:0 4px 12px rgba(0,0,0,0.1)}
+.menu-item img{width:80px;height:80px;object-fit:cover;border-radius:8px;margin-right:15px}
+.menu-info{flex-grow:1}
+button{background:linear-gradient(135deg,#ff6f00,#ff9800);color:#fff;border:none;padding:10px 16px;border-radius:25px;cursor:pointer;font-weight:500;transition:background 0.2s,transform 0.2s;font-size:14px}
+button:hover{background:linear-gradient(135deg,#e65100,#f57c00);transform:scale(1.05)}
+button:active{transform:scale(0.98)}
+input,select{width:100%;padding:12px;margin:8px 0;border:1px solid #ddd;border-radius:8px;box-sizing:border-box;font-size:16px}
+.cart{background:#f0f8ff;padding:20px;border-radius:12px;margin:15px 0;box-shadow:0 4px 12px rgba(0,0,0,0.05)}
+footer{background:linear-gradient(135deg,#6a1b9a,#9c27b0);color:#fff;padding:15px;text-align:center;font-size:14px}
+.whatsapp-btn{position:fixed;bottom:20px;right:20px;background:linear-gradient(135deg,#25D366,#128C7E);color:#fff;padding:15px;border-radius:50%;font-size:22px;text-decoration:none;box-shadow:0 4px 12px rgba(37,211,102,0.3);transition:transform 0.2s}
+.whatsapp-btn:hover{transform:scale(1.1)}
+.upi-btn{display:block;margin:10px 0;padding:12px;color:#fff;border-radius:8px;text-align:center;text-decoration:none;font-weight:500;transition:transform 0.2s}
+.upi-btn:hover{transform:translateY(-1px)}
+#minOrderMsg{color:#d32f2f;font-weight:500}
+@keyframes pulse{0%{transform:scale(1)}50%{transform:scale(1.05)}100%{transform:scale(1)}}
+.added{animation:pulse 0.5s ease-in-out}
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+    .menu-item{flex-direction:column;text-align:center}
+    .menu-item img{margin-right:0;margin-bottom:10px;width:100px;height:100px}
+    section{padding:15px}
+    header{padding:15px}
+    h2{font-size:1.3em}
+    button{padding:12px 20px;font-size:16px}
+}
+
+/* Accessibility */
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+<h1 id="mainTitle">49 Parathas</h1>
+<p id="subTitle">Fresh • Hot • Hygienic Parathas</p>
+<button class="toggle-lang" onclick="toggleLang()" aria-label="Toggle Language">हिंदी / English</button>
+<p id="locationText">📍 Sector 49, Noida</p>
+</header>
+
+<section>
+<h2 id="menuHeader">🥙 Our Paratha Menu</h2>
+
+<div class="menu-item">
+<img src="https://images.unsplash.com/photo-1628258335099-b0d2742b6d4e?w=400&h=300&fit=crop" alt="Plain Paratha" loading="lazy">
+<div class="menu-info">
+<h3>Plain Paratha</h3>
+<p id="plainDesc">₹40</p>
+<button onclick="addItem('Plain Paratha',40,this)" aria-label="Add Plain Paratha to cart">Add to Cart</button>
+</div>
+</div>
+
+<div class="menu-item">
+<img src="https://images.unsplash.com/photo-1567620905732-2d1ec7ab7445?w=400&h=300&fit=crop" alt="Aloo Paratha" loading="lazy">
+<div class="menu-info">
+<h3>Aloo Paratha</h3>
+<p id="alooDesc">₹50</p>
+<button onclick="addItem('Aloo Paratha',50,this)" aria-label="Add Aloo Paratha to cart">Add to Cart</button>
+</div>
+</div>
+
+<div class="menu-item">
+<img src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=400&h=300&fit=crop" alt="Gobhi Paratha" loading="lazy">
+<div class="menu-info">
+<h3>Gobhi Paratha</h3>
+<p id="gobhiDesc">₹50</p>
+<button onclick="addItem('Gobhi Paratha',50,this)" aria-label="Add Gobhi Paratha to cart">Add to Cart</button>
+</div>
+</div>
+
+<div class="menu-item">
+<img src="https://images.unsplash.com/photo-1628258335099-b0d2742b6d4e?w=400&h=300&fit=crop" alt="Paneer Paratha" loading="lazy">
+<div class="menu-info">
+<h3>Paneer Paratha</h3>
+<p id="paneerDesc">₹80</p>
+<button onclick="addItem('Paneer Paratha',80,this)" aria-label="Add Paneer Paratha to cart">Add to Cart</button>
+</div>
+</div>
+
+<div class="menu-item">
+<img src="https://images.unsplash.com/photo-1551028719-00167b16eac5?w=400&h=300&fit=crop" alt="Mix Veg Paratha" loading="lazy">
+<div class="menu-info">
+<h3>Mix Veg Paratha</h3>
+<p id="mixvegDesc">₹60</p>
+<button onclick="addItem('Mix Veg Paratha',60,this)" aria-label="Add Mix Veg Paratha to cart">Add to Cart</button>
+</div>
+</div>
+</section>
+
+<section>
+<h2 id="comboHeader">🔥 Combo Offers</h2>
+<div class="menu-item">
+<img src="https://images.unsplash.com/photo-1567620905732-2d1ec7ab7445?w=400&h=300&fit=crop" alt="Combo Offer" loading="lazy">
+<div class="menu-info">
+<h3>2 Aloo + 1 Plain</h3>
+<p id="combo1Desc">₹130 (Save ₹10!)</p>
+<button onclick="addItem('Combo: 2 Aloo + 1 Plain',130,this)" aria-label="Add Combo to cart">Add to Cart</button>
+</div>
+</div>
+<div class="menu-item">
+<img src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=400&h=300&fit=crop" alt="Paneer Combo" loading="lazy">
+<div class="menu-info">
+<h3>2 Paneer Paratha</h3>
+<p id="combo2Desc">₹150 (Save ₹10!)</p>
+<button onclick="addItem('Combo: 2 Paneer',150,this)" aria-label="Add Paneer Combo to cart">Add to Cart</button>
+</div>
+</div>
+</section>
+
+<section class="cart">
+<h2 id="cartHeader">🛒 Your Cart</h2>
+<div id="cartList">No items yet. Start adding your favorites!</div>
+<button onclick="clearCart()" style="background:#f44336;float:right;" aria-label="Clear Cart">Clear Cart</button>
+
+<p>Subtotal: ₹<span id="subTotal">0</span></p>
+<p>Delivery: ₹<span id="deliveryCharge">0</span> <small>(Free over ₹300)</small></p>
+<p><strong>Total: ₹<span id="finalTotal">0</span></strong></p>
+<p id="minOrderMsg" style="color:#d32f2f"></p>
+
+<input type="text" id="custName" placeholder="Your Full Name *" required aria-label="Customer Name">
+<input type="text" id="custAddr" placeholder="Delivery Address in Sector 49 *" required aria-label="Delivery Address">
+
+<label for="deliveryTime">Preferred Delivery Time</label>
+<select id="deliveryTime" required>
+<option value="">Select Time</option>
+<option value="ASAP">ASAP (15-20 mins)</option>
+<option value="In 30 mins">In 30 mins</option>
+<option value="In 45 mins">In 45 mins</option>
+<option value="In 1 hour">In 1 hour</option>
+</select>
+
+<h3 id="paymentHeader">💳 Pay via UPI (Secure & Instant)</h3>
+<p><strong>UPI ID:</strong> <span id="upiId">7248700377@upi</span></p>
+<p><em>Click below after adding items. Amount will be auto-filled.</em></p>
+
+<a class="upi-btn" id="gpayBtn" href="#" style="background:linear-gradient(135deg,#4285F4,#34A853);">Pay with Google Pay</a>
+<a class="upi-btn" id="phonepeBtn" href="#" style="background:linear-gradient(135deg,#5f259f,#7b1fa2);">Pay with PhonePe</a>
+<a class="upi-btn" id="paytmBtn" href="#" style="background:linear-gradient(135deg,#00b9f1,#0288d1);">Pay with Paytm</a>
+
+<button onclick="placeOrder()" id="orderBtn" disabled style="width:100%;margin-top:15px;background:#4caf50;">Proceed to Order on WhatsApp</button>
+</section>
+
+<section>
+<h2 id="addressHeader">📍 Our Address</h2>
+<p id="addressText">E6, Near Mother Dairy, Village Barola, Sector 49, Noida, 201301</p>
+<a href="https://share.google/qxxaDquct8Odlovu3" target="_blank" rel="noopener">View on Google Maps</a>
+</section>
+
+<section>
+<h2 id="qrHeader">📲 Scan & Order Offline</h2>
+<img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=https://49parathas.github.io" alt="Scan QR to Order" loading="lazy">
+<p id="qrText">Scan this QR code to visit our site and place an order instantly.</p>
+</section>
+
+<footer>
+<p id="contactText">📞 7248700377 | 9873469984 | WhatsApp Orders Only</p>
+<p>© 2025 49 Parathas – Made with ❤️ for Paratha Lovers</p>
+</footer>
+
+<a class="whatsapp-btn" href="https://wa.me/917248700377" aria-label="Chat on WhatsApp">💬</a>
+
+<script>
+let cart = JSON.parse(localStorage.getItem('cart49')) || [];
+let subTotal = cart.reduce((sum, item) => sum + item.price, 0);
+
+const enTexts = {
+    mainTitle: "49 Parathas",
+    subTitle: "Fresh • Hot • Hygienic Parathas",
+    menuHeader: "🥙 Our Paratha Menu",
+    comboHeader: "🔥 Combo Offers",
+    cartHeader: "🛒 Your Cart",
+    paymentHeader: "💳 Pay via UPI (Secure & Instant)",
+    addressHeader: "📍 Our Address",
+    qrHeader: "📲 Scan & Order Offline",
+    qrText: "Scan this QR code to visit our site and place an order instantly.",
+    contactText: "📞 7248700377 | 9873469984 | WhatsApp Orders Only",
+    locationText: "📍 Sector 49, Noida",
+    plainDesc: "₹40",
+    alooDesc: "₹50",
+    gobhiDesc: "₹50",
+    paneerDesc: "₹80",
+    mixvegDesc: "₹60",
+    combo1Desc: "₹130 (Save ₹10!)",
+    combo2Desc: "₹150 (Save ₹10!)",
+    cartEmpty: "No items yet. Start adding your favorites!",
+    minOrderMsg: "Minimum order ₹150 to proceed.",
+    orderBtnText: "Proceed to Order on WhatsApp"
+};
+
+const hiTexts = {
+    mainTitle: "49 पराठे",
+    subTitle: "ताज़ा • गरम • स्वच्छ पराठे",
+    menuHeader: "🥙 हमारा पराठा मेनू",
+    comboHeader: "🔥 कॉम्बो ऑफर्स",
+    cartHeader: "🛒 आपकी टोकरी",
+    paymentHeader: "💳 UPI से भुगतान करें (सुरक्षित और तत्काल)",
+    addressHeader: "📍 हमारा पता",
+    qrHeader: "📲 ऑफलाइन ऑर्डर के लिए स्कैन करें",
+    qrText: "हमारी साइट पर जाने और तुरंत ऑर्डर देने के लिए इस QR कोड को स्कैन करें।",
+    contactText: "📞 7248700377 | 9873469984 | केवल व्हाट्सएप ऑर्डर",
+    locationText: "📍 सेक्टर 49, नोएडा",
+    plainDesc: "₹40",
+    alooDesc: "₹50",
+    gobhiDesc: "₹50",
+    paneerDesc: "₹80",
+    mixvegDesc: "₹60",
+    combo1Desc: "₹130 (₹10 बचाएं!)",
+    combo2Desc: "₹150 (₹10 बचाएं!)",
+    cartEmpty: "अभी कोई आइटम नहीं। अपनी पसंद जोड़ना शुरू करें!",
+    minOrderMsg: "आगे बढ़ने के लिए न्यूनतम ऑर्डर ₹150।",
+    orderBtnText: "व्हाट्सएप पर ऑर्डर दें"
+};
+
+let currentLang = 'en';
+
+function toggleLang() {
+    currentLang = currentLang === 'en' ? 'hi' : 'en';
+    const texts = currentLang === 'en' ? enTexts : hiTexts;
+    Object.keys(texts).forEach(id => {
+        const elem = document.getElementById(id);
+        if (elem) elem.innerText = texts[id];
+    });
+    document.getElementById('cartList').innerHTML = cart.length ? cart.map(i => `${i.name} - ₹${i.price}`).join('<br>') : texts.cartEmpty;
+    localStorage.setItem('lang49', currentLang);
+}
+
+function loadLang() {
+    const savedLang = localStorage.getItem('lang49') || 'en';
+    currentLang = savedLang;
+    toggleLang(); // Trigger to set
+}
+
+function addItem(name, price, btn) {
+    cart.push({name, price});
+    subTotal += price;
+    localStorage.setItem('cart49', JSON.stringify(cart));
+    updateCart();
+    btn.classList.add('added');
+    btn.innerText = 'Added! ✨';
+    setTimeout(() => {
+        btn.classList.remove('added');
+        btn.innerText = 'Add to Cart';
+    }, 1500);
+}
+
+function clearCart() {
+    if (confirm('Clear all items from cart?')) {
+        cart = [];
+        subTotal = 0;
+        localStorage.removeItem('cart49');
+        updateCart();
+    }
+}
+
+function updateCart() {
+    const texts = currentLang === 'en' ? enTexts : hiTexts;
+    let list = cart.map(i => `${i.name} - ₹${i.price}`).join('<br>');
+    document.getElementById("cartList").innerHTML = list || texts.cartEmpty;
+
+    document.getElementById("subTotal").innerText = subTotal;
+
+    let delivery = subTotal >= 300 ? 0 : 20;
+    document.getElementById("deliveryCharge").innerText = delivery;
+
+    let total = subTotal + delivery;
+    document.getElementById("finalTotal").innerText = total;
+
+    document.getElementById("minOrderMsg").innerText = subTotal < 150 ? texts.minOrderMsg : "";
+    document.getElementById("orderBtn").disabled = subTotal < 150;
+
+    // Update UPI links dynamically
+    const upiParams = `upi://pay?pa=7248700377@upi&pn=49%20Parathas&am=${total}&cu=INR&tn=Order%20from%2049%20Parathas`;
+    document.getElementById("gpayBtn").href = upiParams;
+    document.getElementById("phonepeBtn").href = upiParams;
+    document.getElementById("paytmBtn").href = upiParams;
+
+    document.getElementById("orderBtn").innerText = texts.orderBtnText;
+}
+
+function placeOrder() {
+    const name = document.getElementById("custName").value.trim();
+    const addr = document.getElementById("custAddr").value.trim();
+    const time = document.getElementById("deliveryTime").value;
+
+    if (subTotal < 150 || !name || !addr || !time) {
+        alert('Please complete all fields and meet minimum order ₹150.');
+        return;
+    }
+
+    let delivery = subTotal >= 300 ? 0 : 20;
+    let total = subTotal + delivery;
+
+    const texts = currentLang === 'en' ? enTexts : hiTexts;
+    let orderDetails = cart.map(i => `${i.name} (₹${i.price})`).join(', ');
+
+    let kitchenMsg = `🔥 NEW ORDER - 49 Parathas 🔥%0A%0A👤 Name: ${name}%0A📍 Address: ${addr}%0A⏰ Delivery Time: ${time}%0A%0A🍽️ Order: ${orderDetails}%0A💰 Subtotal: ₹${subTotal}%0A🚚 Delivery: ₹${delivery}%0A💳 Total: ₹${total}%0A✅ Paid via UPI`;
+
+    let customerConfirm = `✅ ORDER CONFIRMED! 🍽️%0A%0AThanks for choosing 49 Parathas!%0A%0AOrder: ${cart.map(i=>i.name).join(', ')}%0ATotal: ₹${total}%0AExpected Delivery: ${time}%0A%0A📍 We're in Sector 49, Noida – Hot parathas coming your way! 😊`;
+
+    // Open to shop first
+    window.open(`https://wa.me/917248700377?text=${encodeURIComponent(kitchenMsg)}`, '_blank');
+
+    // Simulate auto-replies: Open confirmation for customer (prefill to share or save)
+    setTimeout(() => {
+        window.open(`https://wa.me/?text=${encodeURIComponent(customerConfirm)}`, '_blank');
+    }, 2000);
+
+    // "Order Accepted" message
+    setTimeout(() => {
+        let orderAccepted = `🔔 ORDER ACCEPTED! 🍽️%0A%0AYour order is being prepared fresh!%0AEst. Time: ${time}%0ATrack via WhatsApp chat. Bon Appétit! 🌟`;
+        window.open(`https://wa.me/?text=${encodeURIComponent(orderAccepted)}`, '_blank');
+    }, 4000);
+
+    // Clear cart after order
+    setTimeout(() => {
+        clearCart();
+    }, 5000);
+}
+
+// Initialize
+document.addEventListener('DOMContentLoaded', () => {
+    loadLang();
+    updateCart();
+});
+</script>
+
+</body>
+</html>
