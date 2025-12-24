@@ -1,347 +1,428 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>49 Parathas | Best Parathas in Sector 49 Noida</title>
-<meta name="description" content="49 Parathas – Fresh, hot & hygienic parathas delivered in Sector 49 Noida. Order directly on WhatsApp.">
-
-<style>
-body{font-family:'Segoe UI',Tahoma,Geneva,Verdana,sans-serif;margin:0;background:linear-gradient(135deg,#fff6ec,#ffe0b2);color:#333;line-height:1.6}
-header{background:linear-gradient(135deg,#6a1b9a,#9c27b0);color:#fff;padding:20px;text-align:center;position:relative;box-shadow:0 4px 8px rgba(0,0,0,0.1)}
-.toggle-lang{position:absolute;top:15px;right:15px;background:#fff;color:#6a1b9a;border:none;padding:8px 12px;border-radius:20px;cursor:pointer;font-size:13px;font-weight:500;transition:transform 0.2s}
-.toggle-lang:hover{transform:scale(1.05)}
-section{padding:20px;margin:10px;background:#fff;border-radius:12px;box-shadow:0 2px 10px rgba(0,0,0,0.05)}
-h2{margin-top:0;color:#6a1b9a;font-size:1.5em;text-align:center}
-.menu-item{display:flex;align-items:center;justify-content:space-between;background:#f9f9f9;padding:15px;border-radius:12px;margin:10px 0;transition:transform 0.2s,box-shadow 0.2s}
-.menu-item:hover{transform:translateY(-2px);box-shadow:0 4px 12px rgba(0,0,0,0.1)}
-.menu-item img{width:80px;height:80px;object-fit:cover;border-radius:8px;margin-right:15px}
-.menu-info{flex-grow:1}
-button{background:linear-gradient(135deg,#ff6f00,#ff9800);color:#fff;border:none;padding:10px 16px;border-radius:25px;cursor:pointer;font-weight:500;transition:background 0.2s,transform 0.2s;font-size:14px}
-button:hover{background:linear-gradient(135deg,#e65100,#f57c00);transform:scale(1.05)}
-button:active{transform:scale(0.98)}
-input,select{width:100%;padding:12px;margin:8px 0;border:1px solid #ddd;border-radius:8px;box-sizing:border-box;font-size:16px}
-.cart{background:#f0f8ff;padding:20px;border-radius:12px;margin:15px 0;box-shadow:0 4px 12px rgba(0,0,0,0.05)}
-footer{background:linear-gradient(135deg,#6a1b9a,#9c27b0);color:#fff;padding:15px;text-align:center;font-size:14px}
-.whatsapp-btn{position:fixed;bottom:20px;right:20px;background:linear-gradient(135deg,#25D366,#128C7E);color:#fff;padding:15px;border-radius:50%;font-size:22px;text-decoration:none;box-shadow:0 4px 12px rgba(37,211,102,0.3);transition:transform 0.2s}
-.whatsapp-btn:hover{transform:scale(1.1)}
-.upi-btn{display:block;margin:10px 0;padding:12px;color:#fff;border-radius:8px;text-align:center;text-decoration:none;font-weight:500;transition:transform 0.2s}
-.upi-btn:hover{transform:translateY(-1px)}
-#minOrderMsg{color:#d32f2f;font-weight:500}
-@keyframes pulse{0%{transform:scale(1)}50%{transform:scale(1.05)}100%{transform:scale(1)}}
-.added{animation:pulse 0.5s ease-in-out}
-
-/* Mobile Responsiveness */
-@media (max-width: 768px) {
-    .menu-item{flex-direction:column;text-align:center}
-    .menu-item img{margin-right:0;margin-bottom:10px;width:100px;height:100px}
-    section{padding:15px}
-    header{padding:15px}
-    h2{font-size:1.3em}
-    button{padding:12px 20px;font-size:16px}
-}
-
-/* Accessibility */
-@media (prefers-reduced-motion: reduce) {
-    *, *::before, *::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; }
-}
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>49 Parathas | Best Parathas in Sector 49 Noida | Paratha in Sector 49 Noida | Cloud kitchen in Noida | Home delivery paratha Noida</title>
+    <meta name="description" content="Order delicious parathas from 49 Parathas, a cloud kitchen in Sector 49 Noida. Enjoy home delivery of fresh aloo paratha, paneer paratha, and more in Noida.">
+    <meta name="keywords" content="Paratha in Sector 49 Noida, Cloud kitchen in Noida, Home delivery paratha Noida, aloo paratha Noida, paneer paratha Noida">
+    <style>
+        body {
+            font-family: sans-serif;
+            max-width: 1200px;
+            margin: auto;
+            padding: 10px;
+        }
+        header {
+            text-align: center;
+        }
+        .menu-items {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+        }
+        .menu-card {
+            border: 1px solid #ddd;
+            padding: 10px;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        .menu-card img {
+            width: 100%;
+            height: auto;
+            max-height: 150px; /* To keep cards somewhat equal */
+            object-fit: cover;
+        }
+        .cart-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #ddd;
+            padding: 10px 0;
+        }
+        .cart-item button {
+            margin: 0 5px;
+        }
+        #payment-section a {
+            display: inline-block;
+            margin: 10px;
+            padding: 10px;
+            background: #4CAF50;
+            color: white;
+            text-decoration: none;
+        }
+        #order-btn {
+            width: 100%;
+            padding: 15px;
+            background: #2196F3;
+            color: white;
+            border: none;
+            font-size: 18px;
+        }
+        @media (max-width: 600px) {
+            #order-btn {
+                position: sticky;
+                bottom: 0;
+                z-index: 100;
+            }
+        }
+        /* Improved spacing and alignment */
+        section {
+            margin-bottom: 40px;
+        }
+        label {
+            display: block;
+            margin: 10px 0;
+        }
+        input, select {
+            width: 100%;
+            padding: 8px;
+        }
+    </style>
 </head>
-
 <body>
+    <header>
+        <h1>49 Parathas</h1>
+        <p>Fresh • Hot • Hygienic Parathas</p>
+        <div id="language-switch">
+            <a href="#" onclick="switchLanguage('hi')">हिंदी</a> / <a href="#" onclick="switchLanguage('en')">English</a>
+        </div>
+        <p>📍 Sector 49, Noida</p>
+    </header>
 
-<header>
-<h1 id="mainTitle">49 Parathas</h1>
-<p id="subTitle">Fresh • Hot • Hygienic Parathas</p>
-<button class="toggle-lang" onclick="toggleLang()" aria-label="Toggle Language">हिंदी / English</button>
-<p id="locationText">📍 Sector 49, Noida</p>
-</header>
+    <section id="menu">
+        <h2>Our Menu</h2>
+        <div class="menu-items" id="menu-container"></div>
+    </section>
 
-<section>
-<h2 id="menuHeader">🥙 Our Paratha Menu</h2>
+    <section id="combos">
+        <h2>🔥 Combo Offers</h2>
+        <div class="menu-items" id="combos-container"></div>
+    </section>
 
-<div class="menu-item">
-<img src="https://images.unsplash.com/photo-1628258335099-b0d2742b6d4e?w=400&h=300&fit=crop" alt="Plain Paratha" loading="lazy">
-<div class="menu-info">
-<h3>Plain Paratha</h3>
-<p id="plainDesc">₹40</p>
-<button onclick="addItem('Plain Paratha',40,this)" aria-label="Add Plain Paratha to cart">Add to Cart</button>
-</div>
-</div>
+    <section id="cart">
+        <h2>🛒 Your Cart</h2>
+        <div id="cart-items"></div>
+        <button onclick="clearCart()">Clear Cart</button>
+        <p>Subtotal: ₹ <span id="subtotal">0</span></p>
+        <p>Delivery: ₹ <span id="delivery">0</span> (Free over ₹300)</p>
+        <p><strong>Total: ₹ <span id="total">0</span></strong></p>
 
-<div class="menu-item">
-<img src="https://images.unsplash.com/photo-1567620905732-2d1ec7ab7445?w=400&h=300&fit=crop" alt="Aloo Paratha" loading="lazy">
-<div class="menu-info">
-<h3>Aloo Paratha</h3>
-<p id="alooDesc">₹50</p>
-<button onclick="addItem('Aloo Paratha',50,this)" aria-label="Add Aloo Paratha to cart">Add to Cart</button>
-</div>
-</div>
+        <label for="name">Name:</label>
+        <input id="name" type="text" required>
 
-<div class="menu-item">
-<img src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=400&h=300&fit=crop" alt="Gobhi Paratha" loading="lazy">
-<div class="menu-info">
-<h3>Gobhi Paratha</h3>
-<p id="gobhiDesc">₹50</p>
-<button onclick="addItem('Gobhi Paratha',50,this)" aria-label="Add Gobhi Paratha to cart">Add to Cart</button>
-</div>
-</div>
+        <label for="address">Address:</label>
+        <input id="address" type="text" required>
 
-<div class="menu-item">
-<img src="https://images.unsplash.com/photo-1628258335099-b0d2742b6d4e?w=400&h=300&fit=crop" alt="Paneer Paratha" loading="lazy">
-<div class="menu-info">
-<h3>Paneer Paratha</h3>
-<p id="paneerDesc">₹80</p>
-<button onclick="addItem('Paneer Paratha',80,this)" aria-label="Add Paneer Paratha to cart">Add to Cart</button>
-</div>
-</div>
+        <label for="delivery-time">Delivery Time:</label>
+        <select id="delivery-time" required>
+            <option value="ASAP">ASAP</option>
+            <option value="30 min">30 min</option>
+            <option value="45 min">45 min</option>
+            <option value="60 min">60 min</option>
+        </select>
 
-<div class="menu-item">
-<img src="https://images.unsplash.com/photo-1551028719-00167b16eac5?w=400&h=300&fit=crop" alt="Mix Veg Paratha" loading="lazy">
-<div class="menu-info">
-<h3>Mix Veg Paratha</h3>
-<p id="mixvegDesc">₹60</p>
-<button onclick="addItem('Mix Veg Paratha',60,this)" aria-label="Add Mix Veg Paratha to cart">Add to Cart</button>
-</div>
-</div>
-</section>
+        <div id="payment-section" style="display: none;">
+            <h3>💳 Pay via UPI (Secure & Instant)</h3>
+            <p>Payable Amount: ₹ <span id="payable">0</span></p>
+            <a id="gpay-btn" href="#">Pay with Google Pay</a>
+            <a id="phonepe-btn" href="#">Pay with PhonePe</a>
+            <a id="paytm-btn" href="#">Pay with Paytm</a>
+        </div>
 
-<section>
-<h2 id="comboHeader">🔥 Combo Offers</h2>
-<div class="menu-item">
-<img src="https://images.unsplash.com/photo-1567620905732-2d1ec7ab7445?w=400&h=300&fit=crop" alt="Combo Offer" loading="lazy">
-<div class="menu-info">
-<h3>2 Aloo + 1 Plain</h3>
-<p id="combo1Desc">₹130 (Save ₹10!)</p>
-<button onclick="addItem('Combo: 2 Aloo + 1 Plain',130,this)" aria-label="Add Combo to cart">Add to Cart</button>
-</div>
-</div>
-<div class="menu-item">
-<img src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=400&h=300&fit=crop" alt="Paneer Combo" loading="lazy">
-<div class="menu-info">
-<h3>2 Paneer Paratha</h3>
-<p id="combo2Desc">₹150 (Save ₹10!)</p>
-<button onclick="addItem('Combo: 2 Paneer',150,this)" aria-label="Add Paneer Combo to cart">Add to Cart</button>
-</div>
-</div>
-</section>
+        <button id="order-btn" onclick="proceedToOrder()" disabled>Proceed to Order on WhatsApp</button>
+    </section>
 
-<section class="cart">
-<h2 id="cartHeader">🛒 Your Cart</h2>
-<div id="cartList">No items yet. Start adding your favorites!</div>
-<button onclick="clearCart()" style="background:#f44336;float:right;" aria-label="Clear Cart">Clear Cart</button>
+    <section id="address">
+        <h2>📍 Our Address</h2>
+        <p>E6, Near Mother Dairy, Village Barola, Sector 49, Noida, 201301</p>
+        <a href="https://www.google.com/maps/search/?api=1&query=E6%2C+Near+Mother+Dairy%2C+Village+Barola%2C+Sector+49%2C+Noida%2C+201301" target="_blank">View on Google Maps</a>
+    </section>
 
-<p>Subtotal: ₹<span id="subTotal">0</span></p>
-<p>Delivery: ₹<span id="deliveryCharge">0</span> <small>(Free over ₹300)</small></p>
-<p><strong>Total: ₹<span id="finalTotal">0</span></strong></p>
-<p id="minOrderMsg" style="color:#d32f2f"></p>
+    <section id="qr">
+        <h2>📲 Scan & Order Offline</h2>
+        <p>Scan this QR code to visit our site and place an order instantly.</p>
+        <img src="https://chart.googleapis.com/chart?cht=qr&chs=200x200&chl=https%3A%2F%2Fmohanub20-creator.github.io%2Fcloud-kitchen-website%2F" alt="QR Code to 49 Parathas Website">
+        <p><a href="https://wa.me/917248700377">💬 Contact on WhatsApp</a></p>
+    </section>
 
-<input type="text" id="custName" placeholder="Your Full Name *" required aria-label="Customer Name">
-<input type="text" id="custAddr" placeholder="Delivery Address in Sector 49 *" required aria-label="Delivery Address">
+    <script>
+        // Data for items and combos
+        const items = {
+            plain: {
+                en: 'Plain Paratha',
+                hi: 'प्लेन परांठा',
+                price: 40,
+                img: 'https://cdn.apartmenttherapy.info/image/upload/f_jpg,q_auto:eco,c_fill,g_auto,w_1500,ar_4:3/k%2FPhoto%2FRecipe%20Ramp%20Up%2F2022-02-Paratha%2Fparatha-stacked-top_view'
+            },
+            aloo: {
+                en: 'Aloo Paratha',
+                hi: 'आलू परांठा',
+                price: 50,
+                img: 'https://media.istockphoto.com/id/1413566368/photo/indian-food-aloo-paratha-or-indian-potato-stuffed-flatbread-served-with-butter-pickle-and.jpg?s=612x612&w=0&k=20&c=hIqRXgQTFJ4Ta_Zh_JhOc_Okjk_yJUB--uDYIjifVCc='
+            },
+            gobhi: {
+                en: 'Gobhi Paratha',
+                hi: 'गोभी परांठा',
+                price: 50,
+                img: 'https://cdn3.foodviva.com/static-content/food-images/north-indian-recipes/gobhi-paratha-recipe/gobhi-paratha-recipe.jpg'
+            },
+            paneer: {
+                en: 'Paneer Paratha',
+                hi: 'पनीर परांठा',
+                price: 80,
+                img: 'https://www.shutterstock.com/image-photo/paneer-paratha-delicious-indian-flatbread-260nw-2563239927.jpg'
+            },
+            mixveg: {
+                en: 'Mix Veg Paratha',
+                hi: 'मिक्स वेज परांठा',
+                price: 60,
+                img: 'https://www.indianhealthyrecipes.com/wp-content/uploads/2020/01/mix-veg-paratha.webp'
+            }
+        };
 
-<label for="deliveryTime">Preferred Delivery Time</label>
-<select id="deliveryTime" required>
-<option value="">Select Time</option>
-<option value="ASAP">ASAP (15-20 mins)</option>
-<option value="In 30 mins">In 30 mins</option>
-<option value="In 45 mins">In 45 mins</option>
-<option value="In 1 hour">In 1 hour</option>
-</select>
+        const combos = {
+            combo1: {
+                en: '2 Aloo + 1 Plain',
+                hi: '2 आलू + 1 प्लेन',
+                price: 130,
+                img: 'https://www.shutterstock.com/image-photo/aloo-paratha-stuffed-flatbread-north-260nw-2547393609.jpg'
+            },
+            combo2: {
+                en: '2 Paneer Paratha',
+                hi: '2 पनीर परांठा',
+                price: 150,
+                img: 'https://www.shutterstock.com/image-photo/paneer-paratha-delicious-indian-flatbread-260nw-2563239927.jpg' // Reusing paneer image
+            }
+        };
 
-<h3 id="paymentHeader">💳 Pay via UPI (Secure & Instant)</h3>
-<p><strong>UPI ID:</strong> <span id="upiId">7248700377@upi</span></p>
-<p><em>Click below after adding items. Amount will be auto-filled.</em></p>
+        let cart = [];
+        let currentLang = 'en';
+        const minOrder = 100; // Assumed minimum order value; adjust if needed
+        const deliveryFee = 50; // Assumed delivery fee if below 300
 
-<a class="upi-btn" id="gpayBtn" href="#" style="background:linear-gradient(135deg,#4285F4,#34A853);">Pay with Google Pay</a>
-<a class="upi-btn" id="phonepeBtn" href="#" style="background:linear-gradient(135deg,#5f259f,#7b1fa2);">Pay with PhonePe</a>
-<a class="upi-btn" id="paytmBtn" href="#" style="background:linear-gradient(135deg,#00b9f1,#0288d1);">Pay with Paytm</a>
+        // Load cart from localStorage
+        function loadCart() {
+            const savedCart = localStorage.getItem('cart');
+            if (savedCart) {
+                cart = JSON.parse(savedCart);
+            }
+        }
 
-<button onclick="placeOrder()" id="orderBtn" disabled style="width:100%;margin-top:15px;background:#4caf50;">Proceed to Order on WhatsApp</button>
-</section>
+        // Save cart to localStorage
+        function saveCart() {
+            localStorage.setItem('cart', JSON.stringify(cart));
+        }
 
-<section>
-<h2 id="addressHeader">📍 Our Address</h2>
-<p id="addressText">E6, Near Mother Dairy, Village Barola, Sector 49, Noida, 201301</p>
-<a href="https://share.google/qxxaDquct8Odlovu3" target="_blank" rel="noopener">View on Google Maps</a>
-</section>
+        // Add to cart, prevent duplicates by increasing quantity
+        function addToCart(id, price) {
+            const existing = cart.find(item => item.id === id);
+            if (existing) {
+                existing.qty++;
+            } else {
+                cart.push({ id, qty: 1, price });
+            }
+            saveCart();
+            renderCart();
+        }
 
-<section>
-<h2 id="qrHeader">📲 Scan & Order Offline</h2>
-<img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=https://49parathas.github.io" alt="Scan QR to Order" loading="lazy">
-<p id="qrText">Scan this QR code to visit our site and place an order instantly.</p>
-</section>
+        // Increase quantity
+        function incQty(id) {
+            const item = cart.find(item => item.id === id);
+            if (item) {
+                item.qty++;
+                saveCart();
+                renderCart();
+            }
+        }
 
-<footer>
-<p id="contactText">📞 7248700377 | 9873469984 | WhatsApp Orders Only</p>
-<p>© 2025 49 Parathas – Made with ❤️ for Paratha Lovers</p>
-</footer>
+        // Decrease quantity, remove if 0
+        function decQty(id) {
+            const item = cart.find(item => item.id === id);
+            if (item) {
+                item.qty--;
+                if (item.qty <= 0) {
+                    removeItem(id);
+                } else {
+                    saveCart();
+                }
+                renderCart();
+            }
+        }
 
-<a class="whatsapp-btn" href="https://wa.me/917248700377" aria-label="Chat on WhatsApp">💬</a>
+        // Remove item
+        function removeItem(id) {
+            cart = cart.filter(item => item.id !== id);
+            saveCart();
+        }
 
-<script>
-let cart = JSON.parse(localStorage.getItem('cart49')) || [];
-let subTotal = cart.reduce((sum, item) => sum + item.price, 0);
+        // Clear cart with confirmation
+        function clearCart() {
+            if (confirm(currentLang === 'en' ? 'Are you sure you want to clear the cart?' : 'क्या आप कार्ट को साफ करना चाहते हैं?')) {
+                cart = [];
+                saveCart();
+                renderCart();
+            }
+        }
 
-const enTexts = {
-    mainTitle: "49 Parathas",
-    subTitle: "Fresh • Hot • Hygienic Parathas",
-    menuHeader: "🥙 Our Paratha Menu",
-    comboHeader: "🔥 Combo Offers",
-    cartHeader: "🛒 Your Cart",
-    paymentHeader: "💳 Pay via UPI (Secure & Instant)",
-    addressHeader: "📍 Our Address",
-    qrHeader: "📲 Scan & Order Offline",
-    qrText: "Scan this QR code to visit our site and place an order instantly.",
-    contactText: "📞 7248700377 | 9873469984 | WhatsApp Orders Only",
-    locationText: "📍 Sector 49, Noida",
-    plainDesc: "₹40",
-    alooDesc: "₹50",
-    gobhiDesc: "₹50",
-    paneerDesc: "₹80",
-    mixvegDesc: "₹60",
-    combo1Desc: "₹130 (Save ₹10!)",
-    combo2Desc: "₹150 (Save ₹10!)",
-    cartEmpty: "No items yet. Start adding your favorites!",
-    minOrderMsg: "Minimum order ₹150 to proceed.",
-    orderBtnText: "Proceed to Order on WhatsApp"
-};
+        // Render menu items
+        function renderMenu() {
+            const menuContainer = document.getElementById('menu-container');
+            menuContainer.innerHTML = '';
+            Object.keys(items).forEach(id => {
+                const item = items[id];
+                const div = document.createElement('div');
+                div.className = 'menu-card';
+                div.innerHTML = `
+                    <img src="${item.img}" alt="${item.en} in Sector 49 Noida">
+                    <h3>${item[currentLang]}</h3>
+                    <p>₹${item.price}</p>
+                    <button onclick="addToCart('${id}', ${item.price})">${currentLang === 'en' ? 'Add to Cart' : 'कार्ट में जोड़ें'}</button>
+                `;
+                menuContainer.appendChild(div);
+            });
+        }
 
-const hiTexts = {
-    mainTitle: "49 पराठे",
-    subTitle: "ताज़ा • गरम • स्वच्छ पराठे",
-    menuHeader: "🥙 हमारा पराठा मेनू",
-    comboHeader: "🔥 कॉम्बो ऑफर्स",
-    cartHeader: "🛒 आपकी टोकरी",
-    paymentHeader: "💳 UPI से भुगतान करें (सुरक्षित और तत्काल)",
-    addressHeader: "📍 हमारा पता",
-    qrHeader: "📲 ऑफलाइन ऑर्डर के लिए स्कैन करें",
-    qrText: "हमारी साइट पर जाने और तुरंत ऑर्डर देने के लिए इस QR कोड को स्कैन करें।",
-    contactText: "📞 7248700377 | 9873469984 | केवल व्हाट्सएप ऑर्डर",
-    locationText: "📍 सेक्टर 49, नोएडा",
-    plainDesc: "₹40",
-    alooDesc: "₹50",
-    gobhiDesc: "₹50",
-    paneerDesc: "₹80",
-    mixvegDesc: "₹60",
-    combo1Desc: "₹130 (₹10 बचाएं!)",
-    combo2Desc: "₹150 (₹10 बचाएं!)",
-    cartEmpty: "अभी कोई आइटम नहीं। अपनी पसंद जोड़ना शुरू करें!",
-    minOrderMsg: "आगे बढ़ने के लिए न्यूनतम ऑर्डर ₹150।",
-    orderBtnText: "व्हाट्सएप पर ऑर्डर दें"
-};
+        // Render combos
+        function renderCombos() {
+            const combosContainer = document.getElementById('combos-container');
+            combosContainer.innerHTML = '';
+            Object.keys(combos).forEach(id => {
+                const combo = combos[id];
+                const div = document.createElement('div');
+                div.className = 'menu-card';
+                div.innerHTML = `
+                    <img src="${combo.img}" alt="${combo.en} Combo in Noida">
+                    <h3>${combo[currentLang]}</h3>
+                    <p>₹${combo.price} (${currentLang === 'en' ? 'Save ₹10!' : '₹10 बचाएं!'})</p>
+                    <button onclick="addToCart('${id}', ${combo.price})">${currentLang === 'en' ? 'Add to Cart' : 'कार्ट में जोड़ें'}</button>
+                `;
+                combosContainer.appendChild(div);
+            });
+        }
 
-let currentLang = 'en';
+        // Render cart items in clean list format
+        function renderCart() {
+            const cartItems = document.getElementById('cart-items');
+            cartItems.innerHTML = '';
+            if (cart.length === 0) {
+                cartItems.innerHTML = '<p>No items yet. Start adding your favorites!</p>';
+            } else {
+                cart.forEach(item => {
+                    const data = items[item.id] || combos[item.id];
+                    const div = document.createElement('div');
+                    div.className = 'cart-item';
+                    div.innerHTML = `
+                        <span>${data[currentLang]}</span>
+                        <button onclick="decQty('${item.id}')">-</button>
+                        <span>${item.qty}</span>
+                        <button onclick="incQty('${item.id}')">+</button>
+                        <span>₹${item.price * item.qty}</span>
+                        <button onclick="removeItem('${item.id}')">x</button>
+                    `;
+                    cartItems.appendChild(div);
+                });
+            }
 
-function toggleLang() {
-    currentLang = currentLang === 'en' ? 'hi' : 'en';
-    const texts = currentLang === 'en' ? enTexts : hiTexts;
-    Object.keys(texts).forEach(id => {
-        const elem = document.getElementById(id);
-        if (elem) elem.innerText = texts[id];
-    });
-    document.getElementById('cartList').innerHTML = cart.length ? cart.map(i => `${i.name} - ₹${i.price}`).join('<br>') : texts.cartEmpty;
-    localStorage.setItem('lang49', currentLang);
-}
+            // Calculate totals
+            const subtotal = cart.reduce((sum, item) => sum + item.price * item.qty, 0);
+            const delivery = subtotal >= 300 ? 0 : deliveryFee;
+            const total = subtotal + delivery;
 
-function loadLang() {
-    const savedLang = localStorage.getItem('lang49') || 'en';
-    currentLang = savedLang;
-    toggleLang(); // Trigger to set
-}
+            document.getElementById('subtotal').textContent = subtotal;
+            document.getElementById('delivery').textContent = delivery;
+            document.getElementById('total').textContent = total;
+            document.getElementById('payable').textContent = total;
 
-function addItem(name, price, btn) {
-    cart.push({name, price});
-    subTotal += price;
-    localStorage.setItem('cart49', JSON.stringify(cart));
-    updateCart();
-    btn.classList.add('added');
-    btn.innerText = 'Added! ✨';
-    setTimeout(() => {
-        btn.classList.remove('added');
-        btn.innerText = 'Add to Cart';
-    }, 1500);
-}
+            // Update payment buttons with amount
+            if (total > 0) {
+                document.getElementById('gpay-btn').href = `upi://pay?pa=physicsfables@okhdfcbank&pn=49Parathas&am=${total}&cu=INR&tn=Order`;
+                document.getElementById('phonepe-btn').href = `upi://pay?pa=724870377@ybl&pn=49Parathas&am=${total}&cu=INR&tn=Order`;
+                document.getElementById('paytm-btn').href = `upi://pay?pa=7248700377@ptaxis&pn=49Parathas&am=${total}&cu=INR&tn=Order`;
+            }
 
-function clearCart() {
-    if (confirm('Clear all items from cart?')) {
-        cart = [];
-        subTotal = 0;
-        localStorage.removeItem('cart49');
-        updateCart();
-    }
-}
+            // Hide/show payment section and disable/enable order button
+            const paymentSection = document.getElementById('payment-section');
+            const orderBtn = document.getElementById('order-btn');
+            if (total >= minOrder && cart.length > 0) {
+                paymentSection.style.display = 'block';
+                orderBtn.disabled = false;
+            } else {
+                paymentSection.style.display = 'none';
+                orderBtn.disabled = true;
+            }
 
-function updateCart() {
-    const texts = currentLang === 'en' ? enTexts : hiTexts;
-    let list = cart.map(i => `${i.name} - ₹${i.price}`).join('<br>');
-    document.getElementById("cartList").innerHTML = list || texts.cartEmpty;
+            // Additional disable if inputs invalid
+            validateInputs();
+        }
 
-    document.getElementById("subTotal").innerText = subTotal;
+        // Validate inputs on change
+        function validateInputs() {
+            const name = document.getElementById('name').value.trim();
+            const address = document.getElementById('address').value.trim();
+            const deliveryTime = document.getElementById('delivery-time').value;
+            const orderBtn = document.getElementById('order-btn');
+            if (name === '' || address === '' || deliveryTime === '') {
+                orderBtn.disabled = true;
+            }
+        }
 
-    let delivery = subTotal >= 300 ? 0 : 20;
-    document.getElementById("deliveryCharge").innerText = delivery;
+        // Switch language
+        function switchLanguage(lang) {
+            currentLang = lang;
+            renderMenu();
+            renderCombos();
+            renderCart();
+        }
 
-    let total = subTotal + delivery;
-    document.getElementById("finalTotal").innerText = total;
+        // Proceed to order
+        function proceedToOrder() {
+            if (!validateInputs()) return;
 
-    document.getElementById("minOrderMsg").innerText = subTotal < 150 ? texts.minOrderMsg : "";
-    document.getElementById("orderBtn").disabled = subTotal < 150;
+            const name = document.getElementById('name').value;
+            const address = document.getElementById('address').value;
+            const deliveryTime = document.getElementById('delivery-time').value;
+            const total = parseInt(document.getElementById('total').textContent);
 
-    // Update UPI links dynamically
-    const upiParams = `upi://pay?pa=7248700377@upi&pn=49%20Parathas&am=${total}&cu=INR&tn=Order%20from%2049%20Parathas`;
-    document.getElementById("gpayBtn").href = upiParams;
-    document.getElementById("phonepeBtn").href = upiParams;
-    document.getElementById("paytmBtn").href = upiParams;
+            if (total < minOrder) {
+                alert(currentLang === 'en' ? 'Minimum order amount is ₹100' : 'न्यूनतम ऑर्डर राशि ₹100 है');
+                return;
+            }
 
-    document.getElementById("orderBtn").innerText = texts.orderBtnText;
-}
+            const message = generateMessage(name, address, deliveryTime);
+            const encodedMessage = encodeURIComponent(message);
+            window.open(`https://wa.me/917248700377?text=${encodedMessage}`, '_blank');
+        }
 
-function placeOrder() {
-    const name = document.getElementById("custName").value.trim();
-    const addr = document.getElementById("custAddr").value.trim();
-    const time = document.getElementById("deliveryTime").value;
+        // Generate professional order message
+        function generateMessage(name, address, deliveryTime) {
+            let msg = currentLang === 'en' ? 'Hello, I would like to place an order:\n\n' : 'नमस्ते, मैं निम्नलिखित ऑर्डर देना चाहता हूँ:\n\n';
+            msg += currentLang === 'en' ? `Name: ${name}\n` : `नाम: ${name}\n`;
+            msg += currentLang === 'en' ? `Address: ${address}\n` : `पता: ${address}\n`;
+            msg += currentLang === 'en' ? `Delivery Time: ${deliveryTime}\n\n` : `डिलीवरी समय: ${deliveryTime}\n\n`;
+            msg += currentLang === 'en' ? 'Items:\n' : 'आइटम:\n';
+            cart.forEach(item => {
+                const data = items[item.id] || combos[item.id];
+                msg += `- ${data[currentLang]} x ${item.qty} = ₹${item.price * item.qty}\n`;
+            });
+            msg += `\nTotal: ₹${document.getElementById('total').textContent}\n`;
+            msg += currentLang === 'en' ? '\nPlease confirm the order.' : '\nकृपया ऑर्डर की पुष्टि करें।';
+            return msg;
+        }
 
-    if (subTotal < 150 || !name || !addr || !time) {
-        alert('Please complete all fields and meet minimum order ₹150.');
-        return;
-    }
+        // Event listeners for input validation
+        document.getElementById('name').addEventListener('input', validateInputs);
+        document.getElementById('address').addEventListener('input', validateInputs);
+        document.getElementById('delivery-time').addEventListener('change', validateInputs);
 
-    let delivery = subTotal >= 300 ? 0 : 20;
-    let total = subTotal + delivery;
-
-    const texts = currentLang === 'en' ? enTexts : hiTexts;
-    let orderDetails = cart.map(i => `${i.name} (₹${i.price})`).join(', ');
-
-    let kitchenMsg = `🔥 NEW ORDER - 49 Parathas 🔥%0A%0A👤 Name: ${name}%0A📍 Address: ${addr}%0A⏰ Delivery Time: ${time}%0A%0A🍽️ Order: ${orderDetails}%0A💰 Subtotal: ₹${subTotal}%0A🚚 Delivery: ₹${delivery}%0A💳 Total: ₹${total}%0A✅ Paid via UPI`;
-
-    let customerConfirm = `✅ ORDER CONFIRMED! 🍽️%0A%0AThanks for choosing 49 Parathas!%0A%0AOrder: ${cart.map(i=>i.name).join(', ')}%0ATotal: ₹${total}%0AExpected Delivery: ${time}%0A%0A📍 We're in Sector 49, Noida – Hot parathas coming your way! 😊`;
-
-    // Open to shop first
-    window.open(`https://wa.me/917248700377?text=${encodeURIComponent(kitchenMsg)}`, '_blank');
-
-    // Simulate auto-replies: Open confirmation for customer (prefill to share or save)
-    setTimeout(() => {
-        window.open(`https://wa.me/?text=${encodeURIComponent(customerConfirm)}`, '_blank');
-    }, 2000);
-
-    // "Order Accepted" message
-    setTimeout(() => {
-        let orderAccepted = `🔔 ORDER ACCEPTED! 🍽️%0A%0AYour order is being prepared fresh!%0AEst. Time: ${time}%0ATrack via WhatsApp chat. Bon Appétit! 🌟`;
-        window.open(`https://wa.me/?text=${encodeURIComponent(orderAccepted)}`, '_blank');
-    }, 4000);
-
-    // Clear cart after order
-    setTimeout(() => {
-        clearCart();
-    }, 5000);
-}
-
-// Initialize
-document.addEventListener('DOMContentLoaded', () => {
-    loadLang();
-    updateCart();
-});
-</script>
-
+        // Initial render
+        loadCart();
+        renderMenu();
+        renderCombos();
+        renderCart();
+    </script>
 </body>
 </html>
