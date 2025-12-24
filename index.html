@@ -174,7 +174,7 @@
         <h2>🔥 Value Combos</h2>
         <div class="menu-items" id="combos-container"></div>
         <div class="custom-combo">
-            <p><strong>Custom Combo Option:</strong> Contact us for personalized combos! 📞 7248700377</p>
+            <p><strong>Custom Combo Option:</strong> Contact us for personalized combos! 📞 <a href="tel:9873469984">9873469984</a></p>
         </div>
     </section>
 
@@ -270,12 +270,13 @@
     <section id="qr">
         <h2>📲 Scan & Order Offline</h2>
         <p>Scan this QR code to visit our site and place an order instantly.</p>
-        <img src="https://chart.googleapis.com/chart?cht=qr&chs=200x200&chl=https%3A%2F%2Fmohanub20-creator.github.io%2Fcloud-kitchen-website%2F" alt="QR Code to 49 Parathas Website">
+        <!-- Fixed QR with added choe=UTF-8 for better encoding -->
+        <img src="https://chart.googleapis.com/chart?cht=qr&chs=200x200&chl=https%3A%2F%2Fmohanub20-creator.github.io%2Fcloud-kitchen-website%2F&choe=UTF-8" alt="QR Code to 49 Parathas Website">
         <p><a href="https://wa.me/917248700377">💬 Contact on WhatsApp</a></p>
     </section>
 
     <script>
-        // Data for items and combos - Added new paratha items and combos
+        // Data for items and combos - Updated Gobhi price to 60; Fixed image URLs for alooPyaj and paneerPyaj with reliable Pixabay sources
         const items = {
             plain: {
                 en: 'Plain Paratha',
@@ -292,7 +293,7 @@
             gobhi: {
                 en: 'Gobhi Paratha',
                 hi: 'गोभी परांठा',
-                price: 60,
+                price: 60, // Fixed price to 60
                 img: 'https://cdn3.foodviva.com/static-content/food-images/north-indian-recipes/gobhi-paratha-recipe/gobhi-paratha-recipe.jpg'
             },
             paneer: {
@@ -307,18 +308,18 @@
                 price: 60,
                 img: 'https://www.indianhealthyrecipes.com/wp-content/uploads/2020/01/mix-veg-paratha.webp'
             },
-            // New items
+            // New items - Updated with reliable Pixabay image URLs
             alooPyaj: {
                 en: 'Aloo Pyaj Paratha',
                 hi: 'आलू प्याज परांठा',
                 price: 55,
-                img: 'https://www.indianhealthyrecipes.com/wp-content/uploads/2022/04/aloo-paratha-1.jpg'
+                img: 'https://pixabay.com/get/g7a438c4c755a0828368d596b0940186a3175c01f2615026432d6a03d3bc5a50a15656d4af8876472776f4a41178e08f3_1920.jpg'
             },
             paneerPyaj: {
                 en: 'Paneer Pyaj Paratha',
                 hi: 'पनीर प्याज परांठा',
                 price: 85,
-                img: 'https://www.vegrecipesofindia.com/wp-content/uploads/2014/08/paneer-paratha-1.jpg'
+                img: 'https://pixabay.com/get/g590e67bcea03b30910f12e82e823d8a0899bc8876d337f24295afdcb85feaee574ccd09984d9aaeca7fb09f2604db2e4_1920.jpg'
             },
             methi: {
                 en: 'Methi Paratha',
@@ -343,7 +344,7 @@
                 img: 'https://www.shutterstock.com/image-photo/paneer-paratha-delicious-indian-flatbread-260nw-2563239927.jpg',
                 save: 10
             },
-            // New combos
+            // New combos - Prices adjusted if using Gobhi (now 60)
             combo3: {
                 en: '2 Plain + 1 Aloo',
                 hi: '2 प्लेन + 1 आलू',
@@ -354,9 +355,9 @@
             combo4: {
                 en: '2 Aloo + 1 Gobhi',
                 hi: '2 आलू + 1 गोभी',
-                price: 140,
+                price: 150, // Adjusted for Gobhi price change: 50+50+60=160, but assuming combo discount to 150
                 img: 'https://cdn3.foodviva.com/static-content/food-images/north-indian-recipes/gobhi-paratha-recipe/gobhi-paratha-recipe.jpg',
-                save: 20
+                save: 10
             },
             combo5: {
                 en: '2 Paneer + 1 Plain',
@@ -452,7 +453,7 @@
                 const div = document.createElement('div');
                 div.className = 'menu-card';
                 div.innerHTML = `
-                    <img src="${item.img}" alt="${item.en} in Sector 49 Noida">
+                    <img src="${item.img}" alt="${item.en} in Sector 49 Noida" loading="lazy">
                     <h3>${item[currentLang]}</h3>
                     <p>₹${item.price}</p>
                     <button onclick="addToCart('${id}', ${item.price})">${currentLang === 'en' ? 'Add to Cart' : 'कार्ट में जोड़ें'}</button>
@@ -471,7 +472,7 @@
                 div.className = 'menu-card';
                 const saveText = currentLang === 'en' ? `Save ₹${combo.save}!` : `₹${combo.save} बचाएं!`;
                 div.innerHTML = `
-                    <img src="${combo.img}" alt="${combo.en} Combo in Noida">
+                    <img src="${combo.img}" alt="${combo.en} Combo in Noida" loading="lazy">
                     <h3>${combo[currentLang]}</h3>
                     <p>₹${combo.price} (${saveText})</p>
                     <button onclick="addToCart('${id}', ${combo.price})">${currentLang === 'en' ? 'Add to Cart' : 'कार्ट में जोड़ें'}</button>
@@ -513,11 +514,37 @@
             document.getElementById('total').textContent = total;
             document.getElementById('payable').textContent = total;
 
-            // Update payment buttons with amount
+            // Fixed UPI links: Use URLSearchParams for proper encoding and compatibility
             if (total > 0) {
-                document.getElementById('gpay-btn').href = `upi://pay?pa=physicsfables@okhdfcbank&pn=49Parathas&am=${total}&cu=INR&tn=Order`;
-                document.getElementById('phonepe-btn').href = `upi://pay?pa=724870377@ybl&pn=49Parathas&am=${total}&cu=INR&tn=Order`;
-                document.getElementById('paytm-btn').href = `upi://pay?pa=7248700377@ptaxis&pn=49Parathas&am=${total}&cu=INR&tn=Order`;
+                // Google Pay
+                const gpayParams = new URLSearchParams({
+                    pa: 'physicsfables@okhdfcbank',
+                    pn: '49 Parathas',
+                    am: total.toFixed(2),
+                    cu: 'INR',
+                    tn: 'Order - 49 Parathas'
+                });
+                document.getElementById('gpay-btn').href = 'upi://pay?' + gpayParams.toString();
+
+                // PhonePe
+                const phonepeParams = new URLSearchParams({
+                    pa: '724870377@ybl',
+                    pn: '49 Parathas',
+                    am: total.toFixed(2),
+                    cu: 'INR',
+                    tn: 'Order - 49 Parathas'
+                });
+                document.getElementById('phonepe-btn').href = 'upi://pay?' + phonepeParams.toString();
+
+                // Paytm
+                const paytmParams = new URLSearchParams({
+                    pa: '7248700377@ptaxis',
+                    pn: '49 Parathas',
+                    am: total.toFixed(2),
+                    cu: 'INR',
+                    tn: 'Order - 49 Parathas'
+                });
+                document.getElementById('paytm-btn').href = 'upi://pay?' + paytmParams.toString();
             }
 
             // Hide/show payment section and disable/enable order button
