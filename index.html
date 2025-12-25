@@ -1,349 +1,209 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Order fresh, hot parathas from 49 Parathas cloud kitchen in Sector 49 Noida. Home delivery of aloo, paneer, pyaj parathas and combos.">
-    <meta name="keywords" content="49 Parathas, paratha Noida, cloud kitchen Sector 49, home delivery paratha, aloo paratha, paneer paratha">
-    <meta property="og:title" content="49 Parathas - Best Parathas in Sector 49 Noida">
-    <meta property="og:description" content="Fresh and hygienic parathas delivered hot to your door.">
-    <title>49 Parathas | Best Parathas in Sector 49 Noida</title>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
-    <style>
-        :root {
-            --primary: #6a1b9a;
-            --accent: #e1bee7;
-            --text: #333;
-            --bg: #f9f9f9;
-            --success: #4caf50;
-        }
-        body { font-family: Arial, sans-serif; margin: 0; padding: 0; background: var(--bg); color: var(--text); }
-        header { text-align: center; background: var(--primary); color: white; padding: 20px; }
-        section { padding: 20px; margin: 10px; background: white; border-radius: 10px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
-        h2 { color: var(--primary); border-bottom: 2px solid var(--accent); padding-bottom: 10px; }
-        .menu-items { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; }
-        .menu-card { border: 1px solid var(--accent); border-radius: 10px; overflow: hidden; text-align: center; background: white; }
-        .menu-card img { width: 100%; height: 200px; object-fit: cover; loading: lazy; }
-        .menu-card h3 { margin: 10px; }
-        .menu-card p { margin: 5px 10px; font-weight: bold; }
-        button, a.button { background: var(--primary); color: white; border: none; padding: 12px; margin: 5px; border-radius: 5px; cursor: pointer; font-size: 16px; text-decoration: none; display: inline-block; min-height: 48px; }
-        button:hover, a.button:hover { background: #4a148c; }
-        button:disabled { background: #ccc; cursor: not-allowed; }
-        .cart-item { display: flex; justify-content: space-between; align-items: center; padding: 10px; border-bottom: 1px solid var(--accent); }
-        .quantity-controls button { padding: 5px 10px; margin: 0 5px; }
-        #order-buttons { position: sticky; bottom: 0; background: white; padding: 10px; box-shadow: 0 -2px 10px rgba(0,0,0,0.1); display: flex; flex-wrap: wrap; justify-content: center; }
-        #confirmation { background: var(--success); color: white; text-align: center; padding: 30px; border-radius: 10px; }
-        #timer { font-size: 24px; font-weight: bold; margin: 20px 0; }
-        .modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.7); justify-content: center; align-items: center; z-index: 1000; }
-        .modal-content { background: white; padding: 20px; border-radius: 10px; max-width: 90%; }
-        .loading { display: none; text-align: center; padding: 20px; font-size: 18px; }
-        .qr-container { text-align: center; margin: 10px 0; }
-        .qr-container div { margin: 0 auto; }
-        @media (max-width: 600px) {
-            .menu-items { grid-template-columns: 1fr; }
-            button, a.button { width: 100%; }
-            .qr-container div { width: 200px; height: 200px; }
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>49 Parathas | Cloud Kitchen Noida</title>
+
+<meta name="description" content="49 Parathas – Fresh homemade parathas in Sector 49 Noida. Order online, pay via UPI or Cash on Delivery.">
+<meta name="theme-color" content="#6a1b9a">
+
+<style>
+:root {
+  --purple:#6a1b9a;
+  --light:#f6f1fa;
+}
+body {
+  margin:0;
+  font-family:Arial, sans-serif;
+  background:var(--light);
+}
+header {
+  background:var(--purple);
+  color:#fff;
+  padding:20px;
+  text-align:center;
+}
+section {
+  background:#fff;
+  margin:15px;
+  padding:15px;
+  border-radius:10px;
+}
+h2 { color:var(--purple); }
+.menu {
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(150px,1fr));
+  gap:15px;
+}
+.card {
+  border:1px solid #ddd;
+  border-radius:8px;
+  padding:10px;
+  text-align:center;
+}
+.card img {
+  width:100%;
+  height:120px;
+  object-fit:cover;
+  border-radius:6px;
+}
+button {
+  background:var(--purple);
+  color:#fff;
+  border:none;
+  padding:10px;
+  width:100%;
+  border-radius:5px;
+  cursor:pointer;
+}
+button:disabled {
+  background:#aaa;
+}
+.cart-item {
+  display:flex;
+  justify-content:space-between;
+  margin:5px 0;
+}
+.qr img {
+  max-width:220px;
+  width:100%;
+}
+.notice {
+  background:#ede7f6;
+  padding:10px;
+  border-radius:6px;
+}
+</style>
 </head>
+
 <body>
-    <header>
-        <h1>49 Parathas</h1>
-        <p>Fresh • Hot • Hygienic Parathas Delivered</p>
-        <p>📍 Sector 49, Noida</p>
-    </header>
 
-    <section id="quick-pay">
-        <h2>Quick Pay ₹49 for Special Paratha</h2>
-        <p>Scan or click to pay ₹49 instantly via UPI.</p>
-        <a id="quick-gpay-btn" class="button" target="_blank">Pay ₹49 with Google Pay</a>
-        <div class="qr-container"><div id="quick-qr"></div></div>
-        <p>Scan the QR above for quick payment.</p>
-    </section>
+<header>
+<h1>49 Parathas</h1>
+<p>Fresh • Hygienic • Home Delivery</p>
+<p>📞 7248700377 / 9873469984</p>
+</header>
 
-    <section id="menu">
-        <h2>Our Menu</h2>
-        <div class="menu-items" id="menu-container"></div>
-    </section>
+<section>
+<h2>Menu</h2>
+<div class="menu" id="menu"></div>
+</section>
 
-    <section id="cart">
-        <h2>🛒 Your Cart</h2>
-        <div id="cart-items"></div>
-        <p>Subtotal: ₹<span id="subtotal">0</span> | Delivery: ₹<span id="delivery">0</span> (Free over ₹300)</p>
-        <p><strong>Total: ₹<span id="total">0</span></strong></p>
+<section>
+<h2>Combos</h2>
+<div class="menu" id="combos"></div>
+<div class="notice">
+Custom Combo? Call / WhatsApp 📞 <b>9873469984</b>
+</div>
+</section>
 
-        <label>Name: <input id="name" type="text" required></label>
-        <label>Address: <input id="address" type="text" required></label>
-        <label>Delivery Time:
-            <select id="delivery-time">
-                <option value="30">ASAP (~30 min)</option>
-                <option value="45">In 45 min</option>
-                <option value="60">In 60 min</option>
-            </select>
-        </label>
+<section>
+<h2>Your Cart</h2>
+<div id="cart"></div>
+<p>Total: ₹ <span id="total">0</span></p>
 
-        <div id="payment-section">
-            <h3>Pay Online via UPI (Mobile Only)</h3>
-            <p>Amount: ₹<span id="payable">0</span></p>
-            <a id="gpay-btn" class="button" target="_blank">Pay with Google Pay</a>
-            <div class="qr-container"><div id="gpay-qr"></div></div>
-            <a id="phonepe-btn" class="button" target="_blank">Pay with PhonePe</a>
-            <div class="qr-container"><div id="phonepe-qr"></div></div>
-            <a id="paytm-btn" class="button" target="_blank">Pay with Paytm</a>
-            <div class="qr-container"><div id="paytm-qr"></div></div>
-            <p style="font-size:12px;color:red;">Open on mobile with app installed or scan QR.</p>
-        </div>
+<input id="name" placeholder="Name">
+<input id="address" placeholder="Address">
 
-        <div id="order-buttons">
-            <button id="online-btn">Pay Online & Order</button>
-            <button id="cod-btn">Cash on Delivery</button>
-            <button id="wa-btn">Proceed to WhatsApp (Optional)</button>
-            <div class="loading" id="loading">Placing Order...</div>
-        </div>
-    </section>
+<button onclick="orderCOD()">Cash on Delivery</button>
+<button onclick="orderUPI()">Pay via UPI</button>
 
-    <section id="confirmation" style="display:none;">
-        <h2>Order Placed Successfully! 🎉</h2>
-        <p>Order ID: <strong><span id="order-id"></span></strong></p>
-        <p>Thank you, <span id="conf-name"></span>!</p>
-        <div id="order-summary"></div>
-        <p>Payment Mode: <span id="payment-mode"></span></p>
-        <p>Estimated Ready In: <div id="timer">Calculating...</div></p>
-        <p>Track your hot parathas soon!</p>
-        <button onclick="location.reload()">Order More</button>
-    </section>
+<p style="font-size:12px">UPI works only on mobile devices</p>
+</section>
 
-    <section id="scan-site">
-        <h2>📲 Scan to Visit 49 Parathas Site</h2>
-        <p>Scan this QR to open the website instantly.</p>
-        <div class="qr-container"><div id="site-qr"></div></div>
-    </section>
+<section class="qr">
+<h2>Scan & Pay</h2>
+<img src="https://api.qrserver.com/v1/create-qr-code/?size=300x300&data=upi://pay?pa=physicsfables@okhdfcbank&pn=49%20Parathas&cu=INR">
+</section>
 
-    <section>
-        <h2>📞 Custom Combo / Queries</h2>
-        <p>Contact us: <a href="tel:+917248700377">+91 7248700377</a></p>
-    </section>
+<section class="qr">
+<h2>Scan to Visit Website</h2>
+<img src="https://api.qrserver.com/v1/create-qr-code/?size=300x300&data=https://mohanub20-creator.github.io/cloud-kitchen-website/">
+</section>
 
-    <div class="modal" id="summary-modal">
-        <div class="modal-content">
-            <h2>Order Summary</h2>
-            <div id="modal-summary"></div>
-            <p><strong>Total: ₹<span id="modal-total">0</span></strong></p>
-            <button id="confirm-order">Confirm & Place Order</button>
-            <button onclick="document.getElementById('summary-modal').style.display='none'">Edit</button>
-        </div>
-    </div>
+<section>
+<h2>Order Confirmation</h2>
+<div id="confirm">Place an order to see confirmation</div>
+</section>
 
-    <script>
-        const ADMIN_WA = "7248700377";
-        const SITE_URL = "https://mohanub20-creator.github.io/cloud-kitchen-website/";
-        const menu = [
-            {id: "plain", name: "Plain Paratha", price: 40, img: "https://images.unsplash.com/photo-1626123428689-4cbf3b74aa0e?w=400"},
-            {id: "aloo", name: "Aloo Paratha", price: 60, img: "https://images.unsplash.com/photo-1633458358779-67a0b7f7c43a?w=400"},
-            {id: "aloo-pyaj", name: "Aloo Pyaj Paratha", price: 70, img: "https://images.unsplash.com/photo-1626132647526-245b5b8c0d7d?w=400"},
-            {id: "paneer", name: "Paneer Paratha", price: 80, img: "https://images.unsplash.com/photo-1596797036546-9d34f1b5ed81?w=400"},
-            {id: "paneer-pyaj", name: "Paneer Pyaj Paratha", price: 90, img: "https://images.unsplash.com/photo-1626123428689-4cbf3b74aa0e?w=400"},
-            {id: "gobhi", name: "Gobhi Paratha", price: 70, img: "https://images.unsplash.com/photo-1631515242987-4a12a224b8d0?w=400"}
-        ];
+<script>
+const ADMIN1 = "917248700377";
+const ADMIN2 = "919873469984";
 
-        let cart = JSON.parse(localStorage.getItem('cart')) || [];
+const items = [
+ {id:"aloo",name:"Aloo Paratha",price:50,img:"https://www.indianhealthyrecipes.com/wp-content/uploads/2021/04/aloo-paratha.jpg"},
+ {id:"aloo_pyaj",name:"Aloo Pyaj Paratha",price:55,img:"https://www.vegrecipesofindia.com/wp-content/uploads/2013/07/aloo-pyaj-paratha.jpg"},
+ {id:"paneer_pyaj",name:"Paneer Pyaj Paratha",price:85,img:"https://www.vegrecipesofindia.com/wp-content/uploads/2014/01/paneer-paratha.jpg"},
+ {id:"gobhi",name:"Gobhi Paratha",price:60,img:"https://www.vegrecipesofindia.com/wp-content/uploads/2021/06/gobi-paratha.jpg"},
+ {id:"methi",name:"Methi Paratha",price:60,img:"https://www.vegrecipesofindia.com/wp-content/uploads/2021/04/methi-paratha.jpg"}
+];
 
-        function renderMenu() {
-            const container = document.getElementById('menu-container');
-            container.innerHTML = '';
-            menu.forEach(item => {
-                const card = document.createElement('div');
-                card.className = 'menu-card';
-                card.innerHTML = `
-                    <img src="${item.img}" alt="${item.name}" loading="lazy">
-                    <h3>${item.name}</h3>
-                    <p>₹${item.price}</p>
-                    <button onclick="addToCart('${item.id}')">Add to Cart</button>
-                `;
-                container.appendChild(card);
-            });
-        }
+const combos = [
+ {id:"combo1",name:"2 Aloo + 1 Plain",price:130,img:"https://www.indianhealthyrecipes.com/wp-content/uploads/2021/04/aloo-paratha.jpg"},
+ {id:"combo2",name:"Family Combo (6 Parathas)",price:300,img:"https://www.vegrecipesofindia.com/wp-content/uploads/2021/04/methi-paratha.jpg"}
+];
 
-        function addToCart(id) {
-            const item = menu.find(i => i.id === id);
-            const existing = cart.find(c => c.id === id);
-            if (existing) existing.qty++;
-            else cart.push({id, name: item.name, price: item.price, qty: 1});
-            saveCart();
-            renderCart();
-        }
+let cart = [];
 
-        function renderCart() {
-            const itemsDiv = document.getElementById('cart-items');
-            itemsDiv.innerHTML = '';
-            let subtotal = 0;
-            cart.forEach((c, i) => {
-                subtotal += c.price * c.qty;
-                const div = document.createElement('div');
-                div.className = 'cart-item';
-                div.innerHTML = `
-                    <span>${c.name} × ${c.qty}</span>
-                    <span>₹${c.price * c.qty}</span>
-                    <div class="quantity-controls">
-                        <button onclick="changeQty(${i}, -1)">-</button>
-                        <button onclick="changeQty(${i}, 1)">+</button>
-                        <button onclick="removeItem(${i})">Remove</button>
-                    </div>
-                `;
-                itemsDiv.appendChild(div);
-            });
-            const delivery = subtotal > 300 ? 0 : 40;
-            const totalAmt = subtotal + delivery;
-            document.getElementById('subtotal').textContent = subtotal;
-            document.getElementById('delivery').textContent = delivery;
-            document.getElementById('total').textContent = totalAmt;
-            document.getElementById('payable').textContent = totalAmt;
+function render() {
+ document.getElementById("menu").innerHTML = items.map(i=>`
+ <div class="card">
+ <img src="${i.img}">
+ <h4>${i.name}</h4>
+ <p>₹${i.price}</p>
+ <button onclick="add('${i.id}',${i.price})">Add</button>
+ </div>`).join("");
 
-            const encodedNote = encodeURIComponent(`Order from 49 Parathas - Total ₹${totalAmt}`);
-            const gpayLink = `upi://pay?pa=physicsfables@okhdfcbank&pn=49%20Parathas&am=${totalAmt}&cu=INR&tn=${encodedNote}`;
-            const phonepeLink = `upi://pay?pa=7248700377@ybl&pn=49%20Parathas&am=${totalAmt}&cu=INR&tn=${encodedNote}`;
-            const paytmLink = `paytmmp://pay?pa=7248700377@ptaxis&pn=49%20Parathas&am=${totalAmt}&cu=INR&tn=${encodedNote}`;
+ document.getElementById("combos").innerHTML = combos.map(i=>`
+ <div class="card">
+ <img src="${i.img}">
+ <h4>${i.name}</h4>
+ <p>₹${i.price}</p>
+ <button onclick="add('${i.id}',${i.price})">Add</button>
+ </div>`).join("");
+}
 
-            document.getElementById('gpay-btn').href = gpayLink;
-            document.getElementById('phonepe-btn').href = phonepeLink;
-            document.getElementById('paytm-btn').href = paytmLink;
+function add(id,price){
+ const x = cart.find(i=>i.id===id);
+ x ? x.qty++ : cart.push({id,price,qty:1});
+ update();
+}
 
-            document.getElementById('gpay-qr').innerHTML = '';
-            new QRCode('gpay-qr', { text: gpayLink, width: 128, height: 128 });
-            document.getElementById('phonepe-qr').innerHTML = '';
-            new QRCode('phonepe-qr', { text: phonepeLink, width: 128, height: 128 });
-            document.getElementById('paytm-qr').innerHTML = '';
-            new QRCode('paytm-qr', { text: paytmLink, width: 128, height: 128 });
+function update(){
+ let total=0;
+ document.getElementById("cart").innerHTML = cart.map(i=>{
+ total+=i.price*i.qty;
+ return `<div class="cart-item">${i.id} x ${i.qty} ₹${i.price*i.qty}</div>`;
+ }).join("");
+ document.getElementById("total").innerText=total;
+}
 
-            saveCart();
-            updateButtons();
-        }
+function message(){
+ return encodeURIComponent(
+ `New Order\nName:${name.value}\nAddress:${address.value}\nTotal:₹${total.innerText}`
+ );
+}
 
-        function changeQty(index, delta) {
-            cart[index].qty += delta;
-            if (cart[index].qty <= 0) cart.splice(index, 1);
-            renderCart();
-        }
+function sendWA(msg){
+ window.open(`https://wa.me/${ADMIN1}?text=${msg}`,"_blank");
+ window.open(`https://wa.me/${ADMIN2}?text=${msg}`,"_blank");
+}
 
-        function removeItem(index) {
-            cart.splice(index, 1);
-            renderCart();
-        }
+function orderCOD(){
+ sendWA(message()+"\nPayment: Cash on Delivery");
+ confirm.innerText="Order placed (COD). We will contact you shortly.";
+}
 
-        function saveCart() {
-            localStorage.setItem('cart', JSON.stringify(cart));
-        }
+function orderUPI(){
+ const amt=total.innerText;
+ window.location.href=`upi://pay?pa=physicsfables@okhdfcbank&pn=49 Parathas&am=${amt}&cu=INR`;
+ sendWA(message()+"\nPayment: UPI");
+ confirm.innerText="UPI initiated. Please complete payment.";
+}
 
-        function updateButtons() {
-            const hasItems = cart.length > 0;
-            const filled = document.getElementById('name').value && document.getElementById('address').value;
-            document.getElementById('online-btn').disabled = !(hasItems && filled);
-            document.getElementById('cod-btn').disabled = !(hasItems && filled);
-            document.getElementById('wa-btn').disabled = !hasItems;
-        }
+render();
+</script>
 
-        function showSummary(paymentMode) {
-            if (cart.length === 0) return alert('Cart is empty');
-            const total = parseInt(document.getElementById('total').textContent);
-            let summary = '<ul>';
-            cart.forEach(c => summary += `<li>${c.name} × ${c.qty} = ₹${c.price * c.qty}</li>`);
-            summary += `</ul><p>Delivery: ₹${document.getElementById('delivery').textContent}</p>`;
-            document.getElementById('modal-summary').innerHTML = summary;
-            document.getElementById('modal-total').textContent = total;
-            window.currentPaymentMode = paymentMode;
-            document.getElementById('summary-modal').style.display = 'flex';
-        }
-
-        function placeOrder(useWA = true) {
-            document.getElementById('loading').style.display = 'block';
-            setTimeout(() => {
-                const name = document.getElementById('name').value;
-                const address = document.getElementById('address').value;
-                const timeMin = document.getElementById('delivery-time').value;
-                const total = document.getElementById('total').textContent;
-                const orderId = 'ORD' + Date.now().toString().slice(-6);
-                const mode = window.currentPaymentMode === 'online' ? 'UPI Online' : window.currentPaymentMode === 'wa' ? 'WhatsApp Order' : 'Cash on Delivery';
-
-                let message = `*New Order*%0AOrder ID: ${orderId}%0AName: ${name}%0AAddress: ${address}%0ADelivery: ~${timeMin} min%0APayment: ${mode}%0ATotal: ₹${total}%0A%0AItems:%0A`;
-                cart.forEach(c => message += `${c.name} × ${c.qty} = ₹${c.price * c.qty}%0A`);
-                const waLink = `https://wa.me/91${ADMIN_WA}?text=${message}`;
-
-                localStorage.setItem('lastOrder', JSON.stringify({
-                    id: orderId, name, mode, timeMin: parseInt(timeMin), items: cart, total
-                }));
-
-                if (window.currentPaymentMode === 'online') {
-                    alert('Complete payment in UPI app, then confirm.');
-                }
-                if (useWA) window.open(waLink, '_blank');
-
-                showConfirmation();
-                document.getElementById('loading').style.display = 'none';
-            }, 1000);
-        }
-
-        function showConfirmation() {
-            const order = JSON.parse(localStorage.getItem('lastOrder'));
-            if (!order) return;
-            document.getElementById('order-id').textContent = order.id;
-            document.getElementById('conf-name').textContent = order.name;
-            document.getElementById('payment-mode').textContent = order.mode;
-
-            let itemsHtml = '<ul>';
-            order.items.forEach(c => itemsHtml += `<li>${c.name} × ${c.qty} = ₹${c.price * c.qty}</li>`);
-            itemsHtml += `</ul><p>Total: ₹${order.total}</p>`;
-            document.getElementById('order-summary').innerHTML = itemsHtml;
-
-            document.querySelector('#menu').style.display = 'none';
-            document.querySelector('#cart').style.display = 'none';
-            document.querySelector('#quick-pay').style.display = 'none';
-            document.querySelector('#scan-site').style.display = 'none';
-            document.getElementById('confirmation').style.display = 'block';
-
-            startTimer(order.timeMin * 60);
-        }
-
-        function startTimer(seconds) {
-            let timeLeft = seconds;
-            const timerDiv = document.getElementById('timer');
-            const interval = setInterval(() => {
-                if (timeLeft <= 0) {
-                    timerDiv.textContent = 'Order should be ready/delivered!';
-                    clearInterval(interval);
-                    return;
-                }
-                const mins = Math.floor(timeLeft / 60).toString().padStart(2, '0');
-                const secs = (timeLeft % 60).toString().padStart(2, '0');
-                timerDiv.textContent = `${mins}:${secs} minutes`;
-                timeLeft--;
-            }, 1000);
-        }
-
-        // Quick Pay ₹49 Setup
-        const quickAmt = 49;
-        const quickNote = encodeURIComponent(`Quick Pay ₹49 - 49 Parathas`);
-        const quickGpayLink = `upi://pay?pa=physicsfables@okhdfcbank&pn=49%20Parathas&am=${quickAmt}&cu=INR&tn=${quickNote}`;
-        document.getElementById('quick-gpay-btn').href = quickGpayLink;
-        new QRCode('quick-qr', { text: quickGpayLink, width: 128, height: 128 });
-
-        // Site QR Setup
-        new QRCode('site-qr', { text: SITE_URL, width: 128, height: 128 });
-
-        // Init
-        renderMenu();
-        renderCart();
-        document.getElementById('online-btn').onclick = () => { document.getElementById('payment-section').style.display = 'block'; showSummary('online'); };
-        document.getElementById('cod-btn').onclick = () => showSummary('cod');
-        document.getElementById('wa-btn').onclick = () => showSummary('wa');
-        document.getElementById('confirm-order').onclick = () => {
-            document.getElementById('summary-modal').style.display = 'none';
-            placeOrder(window.currentPaymentMode !== 'cod');
-        };
-        document.querySelectorAll('input, select').forEach(el => el.addEventListener('input', updateButtons));
-
-        if (localStorage.getItem('lastOrder')) {
-            showConfirmation();
-        }
-    </script>
 </body>
 </html>
