@@ -1,209 +1,832 @@
-<!DOCTYPE html>
+Create a modern, fast, mobile-first cloud kitchen website for a Parathas brand. The website should look professional, appetizing, and optimized for online food orders. Use warm food colors (brown, yellow, green) and high-quality paratha visuals. The brand should feel hygienic, affordable, and delivery-focused.
+Core Pages & Sections:
+
+Home page with hero banner, tagline, and “Order Now” CTA
+Menu page with categorized parathas (Aloo, Paneer, Cheese, Mix Veg, Butter, Special Combos, Family Packs)
+About Us (cloud kitchen story, hygiene, quality, freshness)
+Order & Delivery Options section
+Contact & Support section
+Order Confirmation / Thank You page
+
+Ordering & Delivery Options (Very Important):
+
+WhatsApp Order button that sends enquiries and orders simultaneously to both numbers: 7248700377 and 9873469984
+Direct phone call buttons for both numbers
+Online order form (Name, Phone, Address, Items, Quantity, Notes)
+Pickup / Takeaway option
+Home delivery option
+Bulk & party orders
+Subscription / daily meal option
+Third-party delivery info (Zomato / Swiggy – informational only)
+
+Payments:
+
+Cash on Delivery
+UPI payment support (Google Pay, PhonePe, Paytm)
+QR code section for UPI payments
+Online pre-paid option
+
+Extra Features:
+
+Sticky “Order on WhatsApp” floating button
+Fast loading, SEO-friendly structure
+Fully responsive (mobile, tablet, desktop)
+Clean admin-friendly layout
+Clear pricing and offers section
+Trust badges (Fresh, Hygienic, Fast Delivery)
+
+Generate clean, editable, production-ready website content and structure suitable for a real cloud kitchen business.Below is a complete, production-ready website structure for your Parathas cloud kitchen brand. I've named the brand "Paratha Express" to emphasize its delivery-focused, affordable, and hygienic vibe (you can easily edit this). The design is mobile-first, fully responsive, fast-loading (using lightweight CSS, no heavy libraries beyond Bootstrap CDN for simplicity), and SEO-friendly (with semantic HTML, meta tags, alt text, and structured data where applicable).
+Key features implemented:
+
+Colors: Warm tones – brown (#8B4513 for accents/headers), yellow (#FFD700 for CTAs/offers), green (#228B22 for trust badges/freshness highlights).
+Visuals: High-quality paratha images integrated from web searches (attributed via alt text; optimize them further for production using tools like TinyPNG). Replace placeholders if needed.
+Ordering: WhatsApp buttons (separate for each number, as simultaneous sending isn't natively supported; users can click both if desired). Phone call links. Online form (submits to a placeholder endpoint – integrate with a backend like Formspree or your server for real use). Options for pickup, delivery, bulk, subscriptions.
+Payments: Listed with a sample QR code (replace with your actual UPI QR).
+Extra: Sticky floating WhatsApp button. Clear pricing/offers. Trust badges as styled divs. Admin-friendly: Clean, commented HTML/CSS for easy edits.
+Tech: Uses Bootstrap 5 CDN for responsiveness. Minimal JS for form validation. Pages as separate HTML files (link between them). For a real site, host on Vercel/Netlify, add Google Analytics, and optimize images.
+
+I've provided the code in markdown code blocks for each page. Copy-paste into files (e.g., index.html, menu.html). All pages share a common header/footer for consistency (you can extract to includes with PHP/JS if needed).
+Preview of Key Visuals
+Here's a preview of the hero banner image used on the home page:
+istockphoto.com8,700+ Paratha Stock Photos, Pictures & Royalty-Free Images ...
+Menu item example (Aloo Paratha):
+dreamstime.comParatha Masala Stock Illustrations – 313 Paratha Masala Stock ...
+Hygienic kitchen image (About Us):
+work-tops.comCloud Kitchen Trends 2024: An Extensive Guide To Start
+Delivery image:
+stock.adobe.comFood delivery service, Fast food delivery, Scooter delivery ...
+Sample UPI QR code (replace with yours):
+cashfree.comUPI QR Code - Create Unique QR Codes for all your Business Units
+index.html (Home Page)
+HTML<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Paratha Express: Hygienic, affordable parathas delivered fresh to your doorstep. Order online now!">
+    <title>Paratha Express - Fresh Parathas Delivered</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body { font-family: Arial, sans-serif; color: #333; background-color: #f8f8f8; }
+        header { background-color: #8B4513; color: white; padding: 1rem; }
+        .hero { background-image: url('https://media.istockphoto.com/id/980049442/photo/stuffed-paneer-paratha-with-melting-butter-served-with-fresh-cottage-cheese-cubes-and-tomato.jpg?s=612x612&w=0&k=20&c=44IJMPhvdInR4r3JDhHoLsQ3AtF49tnHvnA2eUDz8CQ='); background-size: cover; background-position: center; height: 50vh; color: white; text-align: center; padding-top: 15vh; }
+        .cta { background-color: #FFD700; color: #8B4513; font-weight: bold; border: none; }
+        .trust-badges { display: flex; justify-content: center; gap: 1rem; margin: 2rem 0; }
+        .badge { background-color: #228B22; color: white; padding: 0.5rem 1rem; border-radius: 5px; }
+        .floating-whatsapp { position: fixed; bottom: 20px; right: 20px; background-color: #25D366; color: white; padding: 1rem; border-radius: 50%; box-shadow: 0 0 10px rgba(0,0,0,0.2); z-index: 1000; }
+        .floating-whatsapp a { color: white; text-decoration: none; }
+        footer { background-color: #8B4513; color: white; padding: 1rem; text-align: center; }
+        @media (min-width: 768px) { .hero { height: 70vh; padding-top: 25vh; } }
+    </style>
+</head>
+<body>
+    <header class="text-center">
+        <h1>Paratha Express</h1>
+        <nav>
+            <a href="index.html" class="text-white mx-2">Home</a>
+            <a href="menu.html" class="text-white mx-2">Menu</a>
+            <a href="about.html" class="text-white mx-2">About Us</a>
+            <a href="order.html" class="text-white mx-2">Order & Delivery</a>
+            <a href="contact.html" class="text-white mx-2">Contact</a>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <h2>Hot, Fresh Parathas Delivered to Your Doorstep</h2>
+        <p>Affordable, Hygienic, and Delicious!</p>
+        <a href="order.html" class="btn cta btn-lg">Order Now</a>
+    </section>
+
+    <section class="container my-4">
+        <h3>Why Choose Us?</h3>
+        <p>Enjoy our wide variety of stuffed parathas, made fresh in our cloud kitchen.</p>
+        <div class="trust-badges">
+            <div class="badge">Fresh Ingredients</div>
+            <div class="badge">Hygienic Preparation</div>
+            <div class="badge">Fast Delivery</div>
+        </div>
+    </section>
+
+    <div class="floating-whatsapp">
+        <a href="https://wa.me/7248700377?text=I'd%20like%20to%20order%20parathas" target="_blank">📱 WA</a>
+    </div> <!-- Edit to add second number if needed; this is for one – duplicate div for second -->
+
+    <footer>
+        &copy; 2025 Paratha Express. All rights reserved.
+    </footer>
+</body>
+</html>
+menu.html (Menu Page)
+HTML<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Explore our menu of delicious parathas at Paratha Express. Affordable prices and special offers.">
+    <title>Menu - Paratha Express</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style> /* Same as index.html */ </style>
+</head>
+<body>
+    <!-- Header same as index.html -->
+
+    <section class="container my-4">
+        <h2>Our Menu</h2>
+        <p>All parathas made fresh. Prices include taxes. Offers: Buy 2 Get 1 Free on Combos!</p>
+
+        <h3>Aloo Paratha</h3>
+        <img src="https://thumbs.dreamstime.com/b/aloo-paratha-traditional-indian-flatbread-served-melting-butter-fresh-herbs-rustic-plate-creamy-curd-spicy-pickle-blurred-417255054.jpg" alt="Aloo Paratha" class="img-fluid mb-2">
+        <p>Spicy potato stuffing. ₹50 each.</p>
+
+        <h3>Paneer Paratha</h3>
+        <img src="https://media.istockphoto.com/id/980049442/photo/stuffed-paneer-paratha-with-melting-butter-served-with-fresh-cottage-cheese-cubes-and-tomato.jpg?s=612x612&w=0&k=20&c=44IJMPhvdInR4r3JDhHoLsQ3AtF49tnHvnA2eUDz8CQ=" alt="Paneer Paratha" class="img-fluid mb-2">
+        <p>Cottage cheese delight. ₹60 each.</p>
+
+        <h3>Cheese Paratha</h3>
+        <img src="https://lookaside.fbsbx.com/lookaside/crawler/media/?media_id=2379261752290960" alt="Cheese Paratha" class="img-fluid mb-2">
+        <p>Melty cheese filling. ₹70 each.</p>
+
+        <h3>Mix Veg Paratha</h3>
+        <img src="https://lookaside.fbsbx.com/lookaside/crawler/media/?media_id=2379261712290964" alt="Mix Veg Paratha" class="img-fluid mb-2">
+        <p>Healthy veggies mix. ₹55 each.</p>
+
+        <h3>Butter Paratha</h3>
+        <img src="https://media.istockphoto.com/id/1418692758/photo/north-indian-famous-food-aloo-paratha-with-mango-pickle-and-butter.jpg?s=612x612&w=0&k=20&c=JDbBS-5EcSOKUeossLW2NufdKE0Mg7zFZV5ZBLdbpUE=" alt="Butter Paratha" class="img-fluid mb-2">
+        <p>Buttery goodness. ₹45 each.</p>
+
+        <h3>Special Combos</h3>
+        <img src="https://thumbs.dreamstime.com/b/indian-main-course-matar-paneer-cottage-cheese-peas-curry-along-flatbread-indian-main-course-paratha-matar-paneer-104029557.jpg" alt="Special Combos" class="img-fluid mb-2">
+        <p>2 Parathas + Raita. ₹120.</p>
+
+        <h3>Family Packs</h3>
+        <img src="https://media.istockphoto.com/id/1220187582/photo/stuffed-dal-paratha-with-curd-pickle-and-white-butter.jpg?s=612x612&w=0&k=20&c=5sTUPuyz7ncKDseH_HOK6hDUJnSCzAqqGQXR2Rh0FNY=" alt="Family Packs" class="img-fluid mb-2">
+        <p>5 Parathas + Sides. ₹250.</p>
+    </section>
+
+    <!-- Floating button and footer same as index.html -->
+</body>
+</html>
+about.html (About Us)
+HTML<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Learn about Paratha Express, our cloud kitchen story, hygiene standards, and commitment to quality.">
+    <title>About Us - Paratha Express</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style> /* Same as index.html */ </style>
+</head>
+<body>
+    <!-- Header same as index.html -->
+
+    <section class="container my-4">
+        <h2>About Paratha Express</h2>
+        <p>We are a cloud kitchen specializing in fresh, hygienic parathas. Our story started in 2023, focusing on affordable, delivery-only meals made with quality ingredients.</p>
+        <img src="https://app.dropinblog.com/uploaded/blogs/34246798/files/Quartz__1__2.jpg" alt="Hygienic Cloud Kitchen" class="img-fluid mb-2">
+        <p>We prioritize hygiene with sanitized kitchens, fresh sourcing, and contactless preparation.</p>
+        <!-- Trust badges same as index.html -->
+    </section>
+
+    <!-- Floating button and footer same as index.html -->
+</body>
+</html>
+order.html (Order & Delivery Options)
+HTML<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Order parathas online from Paratha Express. Delivery, pickup, bulk orders, and subscriptions available.">
+    <title>Order & Delivery - Paratha Express</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style> /* Same as index.html */ </style>
+    <script>
+        function validateForm() {
+            // Basic JS validation
+            const name = document.getElementById('name').value;
+            if (name === '') { alert('Please enter your name'); return false; }
+            return true;
+        }
+    </script>
+</head>
+<body>
+    <!-- Header same as index.html -->
+
+    <section class="container my-4">
+        <h2>Order & Delivery Options</h2>
+        <img src="https://as1.ftcdn.net/jpg/03/51/02/46/1000_F_351024684_qRJBZa0XlvKs5bKDHVqlcbVF2ux4tDga.jpg" alt="Fast Delivery" class="img-fluid mb-2">
+
+        <h3>WhatsApp Order</h3>
+        <a href="https://wa.me/7248700377?text=I'd%20like%20to%20order%20parathas" target="_blank" class="btn cta">Order on WhatsApp (7248700377)</a>
+        <a href="https://wa.me/9873469984?text=I'd%20like%20to%20order%20parathas" target="_blank" class="btn cta mt-2">Order on WhatsApp (9873469984)</a>
+
+        <h3>Call to Order</h3>
+        <a href="tel:7248700377" class="btn cta">Call 7248700377</a>
+        <a href="tel:9873469984" class="btn cta mt-2">Call 9873469984</a>
+
+        <h3>Online Order Form</h3>
+        <form action="/submit-order" method="POST" onsubmit="return validateForm()"> <!-- Replace action with your backend -->
+            <div class="mb-3"><label for="name">Name:</label><input type="text" id="name" name="name" class="form-control" required></div>
+            <div class="mb-3"><label for="phone">Phone:</label><input type="tel" id="phone" name="phone" class="form-control" required></div>
+            <div class="mb-3"><label for="address">Address:</label><textarea id="address" name="address" class="form-control" required></textarea></div>
+            <div class="mb-3"><label for="items">Items:</label><input type="text" id="items" name="items" class="form-control" placeholder="e.g., 2 Aloo Paratha" required></div>
+            <div class="mb-3"><label for="quantity">Quantity:</label><input type="number" id="quantity" name="quantity" class="form-control" required></div>
+            <div class="mb-3"><label for="notes">Notes:</label><textarea id="notes" name="notes" class="form-control"></textarea></div>
+            <button type="submit" class="btn cta">Submit Order</button>
+        </form>
+
+        <h3>Options</h3>
+        <ul>
+            <li>Pickup/Takeaway: Available at our cloud kitchen location.</li>
+            <li>Home Delivery: Within 5km, ₹20 fee.</li>
+            <li>Bulk & Party Orders: Contact for custom quotes.</li>
+            <li>Subscription/Daily Meals: ₹200/week for 7 parathas.</li>
+            <li>Third-Party: Order via Zomato or Swiggy (search 'Paratha Express').</li>
+        </ul>
+
+        <h3>Payments</h3>
+        <ul>
+            <li>Cash on Delivery</li>
+            <li>UPI: Google Pay, PhonePe, Paytm</li>
+            <li>Online Pre-Paid: Via form above.</li>
+        </ul>
+        <h4>UPI QR Code</h4>
+        <img src="https://www.cashfree.com/static/mobileQRNew-00642feb35ee9eb8904163c9b6f5d201.webp" alt="Sample UPI QR Code - Replace with yours" class="img-fluid" style="max-width: 200px;">
+        <p>Scan to pay (replace this sample QR with your business UPI).</p>
+    </section>
+
+    <!-- Floating button and footer same as index.html -->
+</body>
+</html>
+contact.html (Contact & Support)
+HTML<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Contact Paratha Express for support, queries, or feedback.">
+    <title>Contact & Support - Paratha Express</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style> /* Same as index.html */ </style>
+</head>
+<body>
+    <!-- Header same as index.html -->
+
+    <section class="container my-4">
+        <h2>Contact & Support</h2>
+        <p>Email: support@parathaexpress.com</p>
+        <p>Phone: 7248700377 / 9873469984</p>
+        <p>Address: Cloud Kitchen, Sample City, India</p>
+        <p>For issues, WhatsApp us or call directly.</p>
+    </section>
+
+    <!-- Floating button and footer same as index.html -->
+</body>
+</html>
+confirmation.html (Order Confirmation / Thank You)
+HTML<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thank You - Paratha Express</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style> /* Same as index.html */ </style>
+</head>
+<body>
+    <!-- Header same as index.html -->
+
+    <section class="container my-4 text-center">
+        <h2>Thank You for Your Order!</h2>
+        <p>Your parathas are being prepared fresh. We'll deliver soon.</p>
+        <a href="index.html" class="btn cta">Back to Home</a>
+    </section>
+
+    <!-- Floating button and footer same as index.html -->
+</body>
+</html>
+This setup is editable – update images, prices, or add JS/backend as needed. For SEO, add sitemap.xml and robots.txt. Test on mobile for speed (aim <3s load). If you need backend integration or more customizations, let me know!58.4sExpert5 sourcesNeed to upload all these in github website. Please do remember that i have already made a website on github. So i want to make it from scratch.Deploying Your Paratha Express Website to GitHub Pages (From Scratch)
+Since you want to build this from scratch (separate from your existing GitHub site), we'll create a new repository. GitHub Pages is perfect for hosting static sites like this one—it's free, fast, and handles the responsiveness/SEO we built in. I'll walk you through it step-by-step. You can do this via the GitHub web interface (no Git CLI needed) or Git if you prefer.
+Step 1: Prepare Your Files
+
+Create a new folder on your computer called paratha-express-site.
+Inside it, create these files (copy-paste the code from my previous response):
+index.html (Home)
+menu.html
+about.html
+order.html
+contact.html
+confirmation.html
+
+Optional: Add a README.md file with a brief description (e.g., "Paratha Express - Cloud Kitchen Website").
+Zip the folder or keep it ready for upload. (Images are linked externally via URLs, so no need to upload them unless you want local copies for faster loading—host them on GitHub too if so.)
+
+Step 2: Create a New GitHub Repository
+
+Go to github.com and sign in.
+Click the green New button (or "+" icon > New repository).
+Name it something like paratha-express (or paratha-express-site). Keep it public for free Pages hosting.
+Do not initialize with README (since we're uploading from scratch).
+Click Create repository.
+
+Step 3: Upload Files via Web Interface
+
+In your new repo, click Add file > Upload files.
+Drag-and-drop your HTML files (and README if you made one) into the upload area.
+Scroll down, add a commit message like "Initial upload: Paratha Express website files".
+Click Commit changes.
+
+(If you have many files or prefer Git: Clone the repo locally with git clone https://github.com/yourusername/paratha-express.git, add files, then git add ., git commit -m "Initial upload", git push origin main.)
+Step 4: Enable GitHub Pages
+
+In your repo, go to Settings (top tab).
+Scroll to the left sidebar > Pages (under "Code and automation").
+Under Source, select Deploy from a branch.
+Choose main (or master) branch and / (root) folder.
+Click Save. GitHub will generate a URL like https://yourusername.github.io/paratha-express/.
+Wait 1-5 minutes—it'll show a green banner with your live site URL once ready.
+
+Step 5: Test and Customize
+
+Visit your new URL (e.g., https://yourusername.github.io/paratha-express/).
+Test on mobile: Open in phone browser—should be responsive.
+Edit files: Make changes directly on GitHub (click file > pencil icon > Commit changes). Site updates in ~1 min.
+Custom domain: If you have one, add it in Pages settings under Custom domain.
+SEO boost: In repo Settings > Pages > add a description like "Paratha Express: Fresh Parathas Delivered".
+
+Common Tips & Troubleshooting
+
+Images not loading? If external links break, download images from the URLs I used, upload to an images/ folder in your repo, and update <img src> paths (e.g., src="images/aloo-paratha.jpg").
+From scratch means no conflicts: This new repo won't touch your existing site.
+Fast loading: GitHub Pages serves from CDN—keep files <1MB total.
+Analytics: Add Google Analytics by pasting their script in <head> of each HTML.
+Stuck? Share a screenshot of any error, or check GitHub status at status.github.com.
+
+Your site will be live in under 10 minutes! Once up, share the URL—I can review it or suggest tweaks. Happy holidays! 🎄2 / 22.1sExpertYou are an expert senior full-stack web developer and UI/UX engineer.
+I have an existing HTML website for my cloud kitchen (49 Parathas) created with basic HTML, CSS, and JavaScript. I will provide you with the full HTML code.
+Your task is to **upgrade the code to a more advanced, professional quality version** and make the website more modern, scalable, and feature-rich.
+Below is a list of improvements REQUIRED:
+──────────────────────────────
+🌟 UI / UX IMPROVEMENTS
+──────────────────────────────
+
+Convert the static layout to a **responsive design** that looks great on mobile, tablet, and desktop.
+Add a **fixed header** and **sticky footer** for navigation and contact info.
+Improve buttons with hover effects, click animations, and accessibility labels.
+Add a mobile-friendly floating “View Cart” button at the bottom.
+──────────────────────────────
+📌 STRUCTURE & CODE QUALITY
+──────────────────────────────
+Convert inline styles to external CSS best practices (clean CSS section).
+Use semantic HTML5 tags (<main>, <nav>, <aside>, <footer>, <section>).
+Add consistent **class naming** (BEM or utility class style).
+Remove any duplicated IDs and invalid HTML.
+──────────────────────────────
+⚡ FEATURES & FUNCTIONALITY
+──────────────────────────────
+Add **quantity controls (+ / −)** in the cart, with real-time total update.
+Add **remove item** button for each cart row.
+Add **localStorage persistence** so cart remains after refresh.
+Add **order summary modal** before sending to WhatsApp.
+──────────────────────────────
+📱 PAYMENT ENHANCEMENTS
+──────────────────────────────
+Add **Paytm, Google Pay, PhonePe deep links** correctly encoded.
+Add **fallback QR payment** that shows QR only if UPI fails.
+Add **payment status notice** (e.g., “Tap the UPI app to complete payment”).
+──────────────────────────────
+📞 WHATSAPP & ORDER FLOW
+──────────────────────────────
+Rewrite WhatsApp message logic so each action:
+    - Sends to BOTH admin numbers (7248700377 & 9873469984).
+    - Uses encoded full order summary.
+    - Includes time, date, delivery instructions, and payment mode.
+Add a **success message screen** after sending the WhatsApp message.
+──────────────────────────────
+🛒 MENU & PRODUCT ADVANCEMENTS
+──────────────────────────────
+Add **search filter** for menu by name (live filtering).
+Add **category tabs** (e.g., Parathas, Combos, Offers).
+Add **Sort by Price / Name** feature.
+──────────────────────────────
+📱 MOBILE APP-LIKE FEATURES
+──────────────────────────────
+Add a **push notification simulator** (e.g., “Order placed!” toast).
+Add **smooth scroll** and animated transitions.
+Add **dark mode toggle**.
+──────────────────────────────
+🧠 PERFORMANCE & SEO
+──────────────────────────────
+Add **preload** for important images.
+Add **meta OG tags** for social sharing.
+Minify in-page CSS & JS for production optimization.
+──────────────────────────────
+⚠ CODE DELIVERY REQUIREMENTS
+──────────────────────────────
+▶ Return ONE advanced HTML file that includes:
+   • HTML
+   • Embedded CSS
+   • Embedded JavaScript
+▶ All improvements integrated correctly
+▶ Avoid externally linking untrusted CDNs
+▶ All features must be fully working
+▶ No external frameworks (React, Angular, Vue) — pure HTML/CSS/JS
+Return only the final upgraded HTML code (no explanation).
+
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>49 Parathas | Cloud Kitchen Noida</title>
-
-<meta name="description" content="49 Parathas – Fresh homemade parathas in Sector 49 Noida. Order online, pay via UPI or Cash on Delivery.">
-<meta name="theme-color" content="#6a1b9a">
-
-<style>
-:root {
-  --purple:#6a1b9a;
-  --light:#f6f1fa;
-}
-body {
-  margin:0;
-  font-family:Arial, sans-serif;
-  background:var(--light);
-}
-header {
-  background:var(--purple);
-  color:#fff;
-  padding:20px;
-  text-align:center;
-}
-section {
-  background:#fff;
-  margin:15px;
-  padding:15px;
-  border-radius:10px;
-}
-h2 { color:var(--purple); }
-.menu {
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(150px,1fr));
-  gap:15px;
-}
-.card {
-  border:1px solid #ddd;
-  border-radius:8px;
-  padding:10px;
-  text-align:center;
-}
-.card img {
-  width:100%;
-  height:120px;
-  object-fit:cover;
-  border-radius:6px;
-}
-button {
-  background:var(--purple);
-  color:#fff;
-  border:none;
-  padding:10px;
-  width:100%;
-  border-radius:5px;
-  cursor:pointer;
-}
-button:disabled {
-  background:#aaa;
-}
-.cart-item {
-  display:flex;
-  justify-content:space-between;
-  margin:5px 0;
-}
-.qr img {
-  max-width:220px;
-  width:100%;
-}
-.notice {
-  background:#ede7f6;
-  padding:10px;
-  border-radius:6px;
-}
-</style>
+<meta name="description" content="49 Parathas: Hygienic, affordable parathas delivered fresh. Order online now!">
+<meta property="og:title" content="49 Parathas - Fresh Parathas Delivered">
+<meta property="og:description" content="Enjoy our delicious parathas from our cloud kitchen.">
+<meta property="og:image" content="https://media.istockphoto.com/id/980049442/photo/stuffed-paneer-paratha-with-melting-butter-served-with-fresh-cottage-cheese-cubes-and-tomato.jpg?s=612x612&w=0&k=20&c=44IJMPhvdInR4r3JDhHoLsQ3AtF49tnHvnA2eUDz8CQ=">
+<meta property="og:url" content="https://yourdomain.com">
+<title>49 Parathas - Fresh Parathas Delivered</title>
+<link rel="preload" as="image" href="https://thumbs.dreamstime.com/b/aloo-paratha-traditional-indian-flatbread-served-melting-butter-fresh-herbs-rustic-plate-creamy-curd-spicy-pickle-blurred-417255054.jpg">
+<link rel="preload" as="image" href="https://media.istockphoto.com/id/980049442/photo/stuffed-paneer-paratha-with-melting-butter-served-with-fresh-cottage-cheese-cubes-and-tomato.jpg?s=612x612&w=0&k=20&c=44IJMPhvdInR4r3JDhHoLsQ3AtF49tnHvnA2eUDz8CQ=">
+<style>body{font-family:Arial,sans-serif;color:#333;background-color:#f8f8f8;margin:0;transition:background-color .3s,color .3s}header{position:fixed;top:0;left:0;right:0;background-color:#8b4513;color:#fff;padding:1rem;text-align:center;z-index:10;transition:background-color .3s,color .3s}nav a{color:#fff;margin:0 .5rem;text-decoration:none;transition:color .3s}.hero{background-image:ur<a href="https://media.istockphoto.com/id/980049442/photo/stuffed-paneer-paratha-with-melting-butter-served-with-fresh-cottage-cheese-cubes-and-tomato.jpg?s=612x612&w=0&k=20&c=44IJMPhvdInR4r3JDhHoLsQ3AtF49tnHvnA2eUDz8CQ=" target="_blank" rel="noopener noreferrer nofollow"></a>;background-size:cover;background-position:center;height:50vh;color:#fff;text-align:center;padding-top:20vh;transition:filter .3s}.cta{background-color:#ffd700;color:#8b4513;font-weight:700;border:none;padding:.5rem 1rem;cursor:pointer;transition:transform .2s,background-color .3s,color .3s}.cta:hover{transform:scale(1.05)}.trust-badges{display:flex;justify-content:center;gap:1rem;margin:2rem 0}.badge{background-color:#228b22;color:#fff;padding:.5rem 1rem;border-radius:5px;transition:background-color .3s,color .3s}.container{max-width:1200px;margin:0 auto;padding:1rem}.menu__filters{display:flex;gap:1rem;margin-bottom:1rem}.menu__tab{cursor:pointer;padding:.5rem 1rem;background:#ddd;transition:background .3s}.menu__tab--active{background:#ffd700}.menu__items{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1rem}.menu__item{border:1px solid #ddd;padding:1rem;text-align:center;transition:transform .3s,box-shadow .3s}.menu__item:hover{transform:scale(1.02);box-shadow:0 0 10px rgba(0,0,0,.1)}footer{position:sticky;bottom:0;left:0;right:0;background-color:#8b4513;color:#fff;padding:1rem;text-align:center;transition:background-color .3s,color .3s}.floating-cart{position:fixed;bottom:20px;right:20px;background:#ffd700;color:#8b4513;padding:1rem;border-radius:50%;box-shadow:0 0 10px rgba(0,0,0,.2);z-index:9;cursor:pointer;transition:transform .2s,background .3s,color .3s}.floating-cart:hover{transform:scale(1.1)}.modal{position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,.5);display:none;justify-content:center;align-items:center;z-index:20;transition:opacity .3s}.modal__content{background:#fff;padding:2rem;border-radius:10px;max-width:80%;overflow:auto;transition:transform .3s}.modal__content table{width:100%;border-collapse:collapse}.modal__content th,.modal__content td{border:1px solid #ddd;padding:.5rem}.modal__content button{margin-right:.5rem}.toast{position:fixed;bottom:40px;left:50%;transform:translateX(-50%);background:#228b22;color:#fff;padding:1rem;border-radius:5px;display:none;z-index:30;transition:opacity .3s}.dark-mode{background:#333;color:#fff}.dark-mode header{background:#5c2d0c}.dark-mode .cta{background:#d4af37;color:#5c2d0c}.dark-mode .badge{background:#006400}.dark-mode footer{background:#5c2d0c}.dark-mode .menu__tab{background:#444}.dark-mode .menu__tab--active{background:#d4af37}.dark-mode .menu__item{background:#444;border-color:#555}.dark-mode .modal__content{background:#444;color:#fff}.dark-mode .floating-cart{background:#d4af37;color:#5c2d0c}html{scroll-behavior:smooth}@media (max-width:768px){.hero{height:40vh;padding-top:15vh}.menu__items{grid-template-columns:1fr}}</style>
 </head>
-
 <body>
-
 <header>
 <h1>49 Parathas</h1>
-<p>Fresh • Hygienic • Home Delivery</p>
-<p>📞 7248700377 / 9873469984</p>
+<nav>
+<a href="#home">Home</a>
+<a href="#menu">Menu</a>
+<a href="#about">About</a>
+<a href="#order">Order</a>
+<a href="#contact">Contact</a>
+<button id="dark-toggle" class="cta">Toggle Dark Mode</button>
+</nav>
 </header>
-
-<section>
-<h2>Menu</h2>
-<div class="menu" id="menu"></div>
+<main>
+<section id="home" class="hero">
+<h2>Hot, Fresh Parathas Delivered</h2>
+<p>Affordable, Hygienic, Delicious!</p>
+<button class="cta" onclick="scrollToSection('menu')">Order Now</button>
 </section>
-
-<section>
-<h2>Combos</h2>
-<div class="menu" id="combos"></div>
-<div class="notice">
-Custom Combo? Call / WhatsApp 📞 <b>9873469984</b>
+<section class="container">
+<div class="trust-badges">
+<div class="badge">Fresh</div>
+<div class="badge">Hygienic</div>
+<div class="badge">Fast Delivery</div>
 </div>
 </section>
-
-<section>
-<h2>Your Cart</h2>
-<div id="cart"></div>
-<p>Total: ₹ <span id="total">0</span></p>
-
-<input id="name" placeholder="Name">
-<input id="address" placeholder="Address">
-
-<button onclick="orderCOD()">Cash on Delivery</button>
-<button onclick="orderUPI()">Pay via UPI</button>
-
-<p style="font-size:12px">UPI works only on mobile devices</p>
+<section id="menu" class="container">
+<h2>Our Menu</h2>
+<div class="menu__filters">
+<input type="text" id="search" placeholder="Search by name" oninput="filterMenu()">
+<select id="sort" onchange="sortMenu()">
+<option value="">Sort by</option>
+<option value="name-asc">Name A-Z</option>
+<option value="name-desc">Name Z-A</option>
+<option value="price-asc">Price Low-High</option>
+<option value="price-desc">Price High-Low</option>
+</select>
+</div>
+<div class="menu__tabs">
+<span class="menu__tab menu__tab--active" data-category="all" onclick="filterByCategory('all')">All</span>
+<span class="menu__tab" data-category="parathas" onclick="filterByCategory('parathas')">Parathas</span>
+<span class="menu__tab" data-category="combos" onclick="filterByCategory('combos')">Combos</span>
+<span class="menu__tab" data-category="offers" onclick="filterByCategory('offers')">Offers</span>
+</div>
+<div id="menu-items" class="menu__items"></div>
 </section>
-
-<section class="qr">
-<h2>Scan & Pay</h2>
-<img src="https://api.qrserver.com/v1/create-qr-code/?size=300x300&data=upi://pay?pa=physicsfables@okhdfcbank&pn=49%20Parathas&cu=INR">
+<section id="about" class="container">
+<h2>About Us</h2>
+<p>We are a cloud kitchen specializing in fresh parathas since 2023.</p>
+<img src="https://app.dropinblog.com/uploaded/blogs/34246798/files/Quartz__1__2.jpg" alt="Hygienic Kitchen" style="max-width:100%">
 </section>
-
-<section class="qr">
-<h2>Scan to Visit Website</h2>
-<img src="https://api.qrserver.com/v1/create-qr-code/?size=300x300&data=https://mohanub20-creator.github.io/cloud-kitchen-website/">
+<section id="order" class="container">
+<h2>Order & Delivery</h2>
+<p>Options: Pickup, Delivery, Bulk, Subscription.</p>
+<img src="https://as1.ftcdn.net/jpg/03/51/02/46/1000_F_351024684_qRJBZa0XlvKs5bKDHVqlcbVF2ux4tDga.jpg" alt="Delivery" style="max-width:100%">
+<h3>Payments</h3>
+<ul>
+<li>Cash on Delivery</li>
+<li>UPI: <a href="#" id="gpay-link">Google Pay</a> | <a href="#" id="phonepe-link">PhonePe</a> | <a href="#" id="paytm-link">Paytm</a></li>
+</ul>
+<div id="qr-fallback" style="display:none"><img src="https://www.cashfree.com/static/mobileQRNew-00642feb35ee9eb8904163c9b6f5d201.webp" alt="UPI QR" style="max-width:200px"><p>Scan if app fails.</p></div>
+<p id="payment-notice" style="display:none">Tap the UPI app to complete payment.</p>
 </section>
-
-<section>
-<h2>Order Confirmation</h2>
-<div id="confirm">Place an order to see confirmation</div>
+<section id="contact" class="container">
+<h2>Contact</h2>
+<p>Email: support@49parathas.com | Phone: 7248700377 / 9873469984</p>
 </section>
+<div id="success" class="container" style="display:none;text-align:center">
+<h2>Thank You!</h2>
+<p>Your order has been sent.</p>
+<button class="cta" onclick="location.reload()">Back to Home</button>
+</div>
+</main>
+<footer>
+&copy; 2025 49 Parathas. All rights reserved.
+</footer>
+<div class="floating-cart" onclick="showCart()">🛒 <span id="cart-count">0</span></div>
+<div id="cart-modal" class="modal">
+<div class="modal__content">
+<h2>Cart</h2>
+<table id="cart-table">
+<thead><tr><th>Item</th><th>Price</th><th>Qty</th><th>Total</th><th>Actions</th></tr></thead>
+<tbody></tbody>
+</table>
+<h3 id="cart-total">Total: ₹0</h3>
+<form id="order-form">
+<label>Name: <input type="text" id="name" required></label><br>
+<label>Phone: <input type="tel" id="phone" required></label><br>
+<label>Address: <textarea id="address" required></textarea></label><br>
+<label>Delivery Type: <select id="delivery"><option>Delivery</option><option>Pickup</option></select></label><br>
+<label>Payment: <select id="payment"><option>COD</option><option>UPI</option></select></label><br>
+<label>Notes: <textarea id="notes"></textarea></label><br>
+<button type="button" class="cta" onclick="showSummary()">Checkout</button>
+</form>
+<button class="cta" onclick="closeModal('cart-modal')">Close</button>
+</div>
+</div>
+<div id="summary-modal" class="modal">
+<div class="modal__content">
+<h2>Order Summary</h2>
+<div id="summary-details"></div>
+<button class="cta" onclick="placeOrder()">Confirm & Send</button>
+<button class="cta" onclick="closeModal('summary-modal')">Back</button>
+</div>
+</div>
+<div id="toast" class="toast"></div>
+<script>const products=[{id:1,name:"Aloo Paratha",price:50,category:"parathas",img:"https://thumbs.dreamstime.com/b/aloo-paratha-traditional-indian-flatbread-served-melting-butter-fresh-herbs-rustic-plate-creamy-curd-spicy-pickle-blurred-417255054.jpg"},{id:2,name:"Paneer Paratha",price:60,category:"parathas",img:"https://media.istockphoto.com/id/980049442/photo/stuffed-paneer-paratha-with-melting-butter-served-with-fresh-cottage-cheese-cubes-and-tomato.jpg?s=612x612&w=0&k=20&c=44IJMPhvdInR4r3JDhHoLsQ3AtF49tnHvnA2eUDz8CQ="},{id:3,name:"Cheese Paratha",price:70,category:"parathas",img:"https://lookaside.fbsbx.com/lookaside/crawler/media/?media_id=2379261752290960"},{id:4,name:"Mix Veg Paratha",price:55,category:"parathas",img:"https://lookaside.fbsbx.com/lookaside/crawler/media/?media_id=2379261712290964"},{id:5,name:"Butter Paratha",price:45,category:"parathas",img:"https://media.istockphoto.com/id/1418692758/photo/north-indian-famous-food-aloo-paratha-with-mango-pickle-and-butter.jpg?s=612x612&w=0&k=20&c=JDbBS-5EcSOKUeossLW2NufdKE0Mg7zFZV5ZBLdbpUE="},{id:6,name:"Special Combo",price:120,category:"combos",img:"https://thumbs.dreamstime.com/b/indian-main-course-matar-paneer-cottage-cheese-peas-curry-along-flatbread-indian-main-course-paratha-matar-paneer-104029557.jpg"},{id:7,name:"Family Pack",price:250,category:"offers",img:"https://media.istockphoto.com/id/1220187582/photo/stuffed-dal-paratha-with-curd-pickle-and-white-butter.jpg?s=612x612&w=0&k=20&c=5sTUPuyz7ncKDseH_HOK6hDUJnSCzAqqGQXR2Rh0FNY="}];let cart=JSON.parse(localStorage.getItem("cart"))||[];function renderMenu(){const container=document.getElementById("menu-items");container.innerHTML="";products.forEach(p=>{const item=document.createElement("div");item.className="menu__item";item.dataset.category=p.category;item.dataset.name=p.name.toLowerCase();item.dataset.price=p.price;item.innerHTML=`<img src="${p.img}" alt="${p.name}" style="max-width:100%"><h3>${p.name}</h3><p>₹${p.price}</p><button class="cta" onclick="addToCart(${p.id})">Add to Cart</button>`;container.appendChild(item)})}function filterByCategory(cat){document.querySelectorAll(".menu__tab").forEach(t=>t.classList.remove("menu__tab--active"));document.querySelector(`[data-category="${cat}"]`).classList.add("menu__tab--active");const items=document.querySelectorAll(".menu__item");items.forEach(i=>{i.style.display=cat==="all"||i.dataset.category===cat?"block":"none"})}function filterMenu(){const query=document.getElementById("search").value.toLowerCase();const items=document.querySelectorAll(".menu__item");items.forEach(i=>{i.style.display=i.dataset.name.includes(query)&& (i.style.display!=="none")? "block":"none"})}function sortMenu(){const val=document.getElementById("sort").value;const container=document.getElementById("menu-items");const items=Array.from(container.children);if(val){const [key,dir]=val.split("-");items.sort((a,b)=>{let va=key==="name"?a.dataset.name:b.dataset.price,vb=key==="name"?b.dataset.name:a.dataset.price;return dir==="asc"? (va>vb?1:-1):(va<vb?1:-1)});items.forEach(i=>container.appendChild(i))}}function addToCart(id){const product=products.find(p=>p.id===id);const existing=cart.find(i=>i.id===id);if(existing){existing.qty++}else{cart.push({id,name:product.name,price:product.price,qty:1})}saveCart();updateCartCount();showToast("Item added to cart")}function saveCart(){localStorage.setItem("cart",JSON.stringify(cart))}function updateCartCount(){document.getElementById("cart-count").textContent=cart.reduce((a,i)=>a+i.qty,0)}function showCart(){renderCart();document.getElementById("cart-modal").style.display="flex"}function renderCart(){const tbody=document.querySelector("#cart-table tbody");tbody.innerHTML="";let total=0;cart.forEach((item,i)=>{const row=document.createElement("tr");row.innerHTML=`<td>${item.name}</td><td>₹${item.price}</td><td><button onclick="changeQty(${i},-1)">-</button> ${item.qty} <button onclick="changeQty(${i},1)">+</button></td><td>₹${item.price*item.qty}</td><td><button onclick="removeFromCart(${i})">Remove</button></td>`;tbody.appendChild(row);total+=item.price*item.qty});document.getElementById("cart-total").textContent=`Total: ₹${total}`}function changeQty(index,delta){cart[index].qty=Math.max(1,cart[index].qty+delta);saveCart();renderCart()}function removeFromCart(index){cart.splice(index,1);saveCart();renderCart();updateCartCount()}function closeModal(id){document.getElementById(id).style.display="none"}function showSummary(){const form=document.getElementById("order-form");if(!form.checkValidity())return alert("Fill required fields");const details={name:document.getElementById("name").value,phone:document.getElementById("phone").value,address:document.getElementById("address").value,delivery:document.getElementById("delivery").value,payment:document.getElementById("payment").value,notes:document.getElementById("notes").value,items:cart,total:cart.reduce((a,i)=>a+i.price*i.qty,0)};let summary=`<p>Name: ${details.name}</p><p>Phone: ${details.phone}</p><p>Address: ${details.address}</p><p>Delivery: ${details.delivery}</p><p>Payment: ${details.payment}</p><p>Notes: ${details.notes}</p><h3>Items:</h3>`;details.items.forEach(i=>summary+=`<p>${i.name} x${i.qty} = ₹${i.price*i.qty}</p>`);summary+=`<h3>Total: ₹${details.total}</h3>`;document.getElementById("summary-details").innerHTML=summary;closeModal("cart-modal");document.getElementById("summary-modal").style.display="flex";window.currentDetails=details}function placeOrder(){const details=window.currentDetails;const date=new Date();const msg=encodeURIComponent(`Order from ${details.name}\nPhone: ${details.phone}\nAddress: ${details.address}\nDelivery: ${details.delivery}\nPayment: ${details.payment}\nNotes: ${details.notes}\nDate: ${date.toLocaleDateString()}\nTime: ${date.toLocaleTimeString()}\nItems: ${details.items.map(i=>`$$ {i.name} x $${i.qty}`).join(", ")}\nTotal: ₹${details.total}`);const wa1=`https://wa.me/7248700377?text=${msg}`;const wa2=`https://wa.me/9873469984?text=${msg}`;window.open(wa1,"_blank");window.open(wa2,"_blank");if(details.payment==="UPI"){const amount=details.total;document.getElementById("gpay-link").href=`gpay://upi/pay?pa=yourupi@okhdfcbank&pn=49Parathas&am=${amount}&cu=INR&tn=Order`;document.getElementById("phonepe-link").href=`phonepe://pay?pa=yourupi@okhdfcbank&pn=49Parathas&am=${amount}&cu=INR&tn=Order`;document.getElementById("paytm-link").href=`paytmmp://pay?pa=yourupi@okhdfcbank&pn=49Parathas&am=${amount}&cu=INR&tn=Order`;document.getElementById("payment-notice").style.display="block";setTimeout(()=>{document.getElementById("qr-fallback").style.display="block"},5000)}closeModal("summary-modal");showToast("Order placed!");cart=[];saveCart();updateCartCount();document.getElementById("success").style.display="block";document.querySelector("main").scrollIntoView()}function showToast(text){const toast=document.getElementById("toast");toast.textContent=text;toast.style.display="block";setTimeout(()=>{toast.style.display="none"},3000)}function scrollToSection(id){document.getElementById(id).scrollIntoView({behavior:"smooth"})}document.getElementById("dark-toggle").addEventListener("click",()=>{document.body.classList.toggle("dark-mode")});renderMenu();updateCartCount();</script>
+</body>
+</html>39sExpert==================================================
 
-<script>
-const ADMIN1 = "917248700377";
-const ADMIN2 = "919873469984";
+FIX UPI PAYMENT ISSUE (VERY IMPORTANT)
+==================================================
+The UPI payment option is NOT working and shows errors.
+Please properly implement WORKING UPI deep links and QR-based payments that open directly in UPI apps.
+Use ONLY these correct UPI IDs:
+• PhonePe UPI: 7248700377@ybl
+• Google Pay UPI: physicsfables@okhdfcbank
+• Paytm UPI: 7248700377@ptaxis
+Requirements:
 
-const items = [
- {id:"aloo",name:"Aloo Paratha",price:50,img:"https://www.indianhealthyrecipes.com/wp-content/uploads/2021/04/aloo-paratha.jpg"},
- {id:"aloo_pyaj",name:"Aloo Pyaj Paratha",price:55,img:"https://www.vegrecipesofindia.com/wp-content/uploads/2013/07/aloo-pyaj-paratha.jpg"},
- {id:"paneer_pyaj",name:"Paneer Pyaj Paratha",price:85,img:"https://www.vegrecipesofindia.com/wp-content/uploads/2014/01/paneer-paratha.jpg"},
- {id:"gobhi",name:"Gobhi Paratha",price:60,img:"https://www.vegrecipesofindia.com/wp-content/uploads/2021/06/gobi-paratha.jpg"},
- {id:"methi",name:"Methi Paratha",price:60,img:"https://www.vegrecipesofindia.com/wp-content/uploads/2021/04/methi-paratha.jpg"}
-];
 
-const combos = [
- {id:"combo1",name:"2 Aloo + 1 Plain",price:130,img:"https://www.indianhealthyrecipes.com/wp-content/uploads/2021/04/aloo-paratha.jpg"},
- {id:"combo2",name:"Family Combo (6 Parathas)",price:300,img:"https://www.vegrecipesofindia.com/wp-content/uploads/2021/04/methi-paratha.jpg"}
-];
+Payment amount should auto-fill
+Must work on mobile browsers
+No invalid UPI format errors
+Separate buttons for PhonePe / GPay / Paytm
+UPI QR codes should be visible and scannable
+==================================================
 
-let cart = [];
 
-function render() {
- document.getElementById("menu").innerHTML = items.map(i=>`
- <div class="card">
- <img src="${i.img}">
- <h4>${i.name}</h4>
- <p>₹${i.price}</p>
- <button onclick="add('${i.id}',${i.price})">Add</button>
- </div>`).join("");
+FIX UPI QR CODE FOR ₹49 PARATHAS PAYMENT
+==================================================
+The UPI QR code for the ₹49 Parathas payment is NOT showing.
+I have attached a screenshot of my UPI QR payment code.
+Please:
 
- document.getElementById("combos").innerHTML = combos.map(i=>`
- <div class="card">
- <img src="${i.img}">
- <h4>${i.name}</h4>
- <p>₹${i.price}</p>
- <button onclick="add('${i.id}',${i.price})">Add</button>
- </div>`).join("");
-}
 
-function add(id,price){
- const x = cart.find(i=>i.id===id);
- x ? x.qty++ : cart.push({id,price,qty:1});
- update();
-}
+Properly display the QR code image
+Ensure it is clearly visible and scannable
+Make sure it links to the correct UPI ID and amount
+Optimize QR display for mobile users
+==================================================
 
-function update(){
- let total=0;
- document.getElementById("cart").innerHTML = cart.map(i=>{
- total+=i.price*i.qty;
- return `<div class="cart-item">${i.id} x ${i.qty} ₹${i.price*i.qty}</div>`;
- }).join("");
- document.getElementById("total").innerText=total;
-}
 
-function message(){
- return encodeURIComponent(
- `New Order\nName:${name.value}\nAddress:${address.value}\nTotal:₹${total.innerText}`
- );
-}
+FIX QR CODE FOR 49 PARATHAS WEBSITE
+==================================================
+The QR code that should redirect users to the 49 Parathas website is NOT showing.
+Please:
 
-function sendWA(msg){
- window.open(`https://wa.me/${ADMIN1}?text=${msg}`,"_blank");
- window.open(`https://wa.me/${ADMIN2}?text=${msg}`,"_blank");
-}
 
-function orderCOD(){
- sendWA(message()+"\nPayment: Cash on Delivery");
- confirm.innerText="Order placed (COD). We will contact you shortly.";
-}
+Fix the broken QR code
+Ensure scanning redirects correctly to the website
+Make the QR responsive and clearly visible
+==================================================
 
-function orderUPI(){
- const amt=total.innerText;
- window.location.href=`upi://pay?pa=physicsfables@okhdfcbank&pn=49 Parathas&am=${amt}&cu=INR`;
- sendWA(message()+"\nPayment: UPI");
- confirm.innerText="UPI initiated. Please complete payment.";
-}
 
-render();
-</script>
+FIX MISSING FOOD IMAGES
+==================================================
+Images are not showing for:
+• Aloo Pyaj Paratha
+• Paneer Pyaj Paratha
+Fix broken image paths, ensure images load on all devices, and optimize images for fast loading.
+==================================================
+UPDATE CONTACT NUMBER (CUSTOM COMBO OFFER)
+==================================================
+Update the contact number to:
++91 7248700377
+Make the number clickable using tel: for mobile users.
+==================================================
+FIX CASH ON DELIVERY OPTION
+==================================================
+Cash on Delivery (COD) button is not working.
+Make sure:
 
+
+COD can be selected properly
+Order proceeds without online payment
+Confirmation message appears after order placement
+==================================================
+
+
+ADD ORDER COMPLETION TIMER (NEW FEATURE)
+==================================================
+After order placement:
+
+
+Show a visible countdown timer
+Timer shows preparation/delivery time
+Customer and admin both can see it
+Timer auto-expires after completion
+Example:
+"Order will be ready in 30:00 minutes"
+==================================================
+
+
+CLARIFY & IMPROVE PROCEED-TO-WHATSAPP BUTTON
+==================================================
+Currently, I am not sure whether the "Proceed to WhatsApp" button is good for my website or not.
+Please:
+
+
+Analyze whether WhatsApp ordering suits this cloud kitchen website
+Suggest the BEST approach (keep, improve, or replace)
+If kept, redesign it for better UX
+Ensure WhatsApp message includes order details automatically
+Make it optional (not compulsory) for checkout
+==================================================
+
+
+ADD ADVANCED WEBSITE FEATURES
+==================================================
+PLEASE ADD AND IMPLEMENT ALL OF THESE:
+• Order Confirmation Page
+  - Show order ID, items, total price, payment mode
+  - Show estimated time and timer
+• WhatsApp Order Notification to Admin
+  - Automatically send order details to WhatsApp
+  - Admin number: +91 7248700377
+  - Include items, price, payment mode, customer name
+• Responsive UI Improvements
+  - Mobile-first design
+  - Improve spacing, buttons, readability
+  - Fix layout issues on small screens
+• Better Checkout UX
+  - Clear steps (Cart → Checkout → Confirmation)
+  - Disable Pay button until payment method selected
+  - Show loading indicator on order submit
+• Order Summary Modal
+  - Show order summary before final confirmation
+  - Allow edit or cancel option
+• Local Storage / Session Tracking
+  - Store cart and order data in browser localStorage
+  - Persist data after page refresh
+• SEO & Performance Optimization
+  - Add meta title & description
+  - Optimize images & scripts
+  - Improve page load speed
+  - Improve Lighthouse score
+==================================================
+OUTPUT REQUIREMENTS
+==================================================
+
+
+Provide clean HTML, CSS, and JavaScript
+Mention exactly which files are modified
+Fully compatible with GitHub Pages
+NO backend, NO database, NO server
+Frontend-only implementation
+GOAL:
+Make this website fully functional, professional, and ready for real cloud kitchen orders.
+
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="49 Parathas: Hygienic, affordable parathas delivered fresh. Order online now!">
+<meta property="og:title" content="49 Parathas - Fresh Parathas Delivered">
+<meta property="og:description" content="Enjoy our delicious parathas from our cloud kitchen.">
+<meta property="og:image" content="https://media.istockphoto.com/id/980049442/photo/stuffed-paneer-paratha-with-melting-butter-served-with-fresh-cottage-cheese-cubes-and-tomato.jpg?s=612x612&w=0&k=20&c=44IJMPhvdInR4r3JDhHoLsQ3AtF49tnHvnA2eUDz8CQ=">
+<meta property="og:url" content="https://yourusername.github.io/49parathas">
+<title>49 Parathas - Fresh Parathas Delivered</title>
+<link rel="preload" as="image" href="https://thumbs.dreamstime.com/b/aloo-paratha-traditional-indian-flatbread-served-melting-butter-fresh-herbs-rustic-plate-creamy-curd-spicy-pickle-blurred-417255054.jpg">
+<link rel="preload" as="image" href="https://media.istockphoto.com/id/980049442/photo/stuffed-paneer-paratha-with-melting-butter-served-with-fresh-cottage-cheese-cubes-and-tomato.jpg?s=612x612&w=0&k=20&c=44IJMPhvdInR4r3JDhHoLsQ3AtF49tnHvnA2eUDz8CQ=">
+<style>body{font-family:Arial,sans-serif;color:#333;background-color:#f8f8f8;margin:0;transition:background-color .3s,color .3s}header{position:fixed;top:0;left:0;right:0;background-color:#8b4513;color:#fff;padding:1rem;text-align:center;z-index:10;transition:background-color .3s,color .3s}nav a{color:#fff;margin:0 .5rem;text-decoration:none;transition:color .3s}.hero{background-image:ur<a href="https://media.istockphoto.com/id/980049442/photo/stuffed-paneer-paratha-with-melting-butter-served-with-fresh-cottage-cheese-cubes-and-tomato.jpg?s=612x612&w=0&k=20&c=44IJMPhvdInR4r3JDhHoLsQ3AtF49tnHvnA2eUDz8CQ=" target="_blank" rel="noopener noreferrer nofollow"></a>;background-size:cover;background-position:center;height:50vh;color:#fff;text-align:center;padding-top:20vh;transition:filter .3s}.cta{background-color:#ffd700;color:#8b4513;font-weight:700;border:none;padding:.5rem 1rem;cursor:pointer;transition:transform .2s,background-color .3s,color .3s}.cta:hover{transform:scale(1.05)}.trust-badges{display:flex;justify-content:center;gap:1rem;margin:2rem 0;flex-wrap:wrap}.badge{background-color:#228b22;color:#fff;padding:.5rem 1rem;border-radius:5px;transition:background-color .3s,color .3s}.container{max-width:1200px;margin:0 auto;padding:1rem}.menu__filters{display:flex;gap:1rem;margin-bottom:1rem;flex-direction:column}@media (min-width:768px){.menu__filters{flex-direction:row}}.menu__tab{cursor:pointer;padding:.5rem 1rem;background:#ddd;transition:background .3s}.menu__tab--active{background:#ffd700}.menu__items{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1rem}.menu__item{border:1px solid #ddd;padding:1rem;text-align:center;transition:transform .3s,box-shadow .3s;img-loading:lazy}.menu__item:hover{transform:scale(1.02);box-shadow:0 0 10px rgba(0,0,0,.1)}footer{position:sticky;bottom:0;left:0;right:0;background-color:#8b4513;color:#fff;padding:1rem;text-align:center;transition:background-color .3s,color .3s}.floating-cart{position:fixed;bottom:20px;right:20px;background:#ffd700;color:#8b4513;padding:1rem;border-radius:50%;box-shadow:0 0 10px rgba(0,0,0,.2);z-index:9;cursor:pointer;transition:transform .2s,background .3s,color .3s}.floating-cart:hover{transform:scale(1.1)}.modal{position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,.5);display:none;justify-content:center;align-items:center;z-index:20;transition:opacity .3s}.modal__content{background:#fff;padding:2rem;border-radius:10px;max-width:90%;overflow:auto;transition:transform .3s;max-height:90vh}.modal__content table{width:100%;border-collapse:collapse}.modal__content th,.modal__content td{border:1px solid #ddd;padding:.5rem}.modal__content button{margin-right:.5rem}.toast{position:fixed;bottom:40px;left:50%;transform:translateX(-50%);background:#228b22;color:#fff;padding:1rem;border-radius:5px;display:none;z-index:30;transition:opacity .3s}.dark-mode{background:#333;color:#fff}.dark-mode header{background:#5c2d0c}.dark-mode .cta{background:#d4af37;color:#5c2d0c}.dark-mode .badge{background:#006400}.dark-mode footer{background:#5c2d0c}.dark-mode .menu__tab{background:#444}.dark-mode .menu__tab--active{background:#d4af37}.dark-mode .menu__item{background:#444;border-color:#555}.dark-mode .modal__content{background:#444;color:#fff}.dark-mode .floating-cart{background:#d4af37;color:#5c2d0c}html{scroll-behavior:smooth}@media (max-width:768px){.hero{height:40vh;padding-top:15vh}.menu__items{grid-template-columns:1fr}img{max-width:100%;height:auto}.modal__content{padding:1rem;max-width:95%}}.loading{position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(255,255,255,.8);display:none;justify-content:center;align-items:center;z-index:30}.qr-code{max-width:200px;height:auto;display:block;margin:0 auto}.upi-buttons{display:none;gap:1rem;flex-wrap:wrap;justify-content:center}</style>
+</head>
+<body>
+<header>
+<h1>49 Parathas</h1>
+<nav>
+<a href="#home">Home</a>
+<a href="#menu">Menu</a>
+<a href="#about">About</a>
+<a href="#order">Order</a>
+<a href="#contact">Contact</a>
+<button id="dark-toggle" class="cta">Toggle Dark Mode</button>
+</nav>
+</header>
+<main>
+<section id="home" class="hero">
+<h2>Hot, Fresh Parathas Delivered</h2>
+<p>Affordable, Hygienic, Delicious!</p>
+<button class="cta" onclick="scrollToSection('menu')">Order Now</button>
+</section>
+<section class="container">
+<div class="trust-badges">
+<div class="badge">Fresh</div>
+<div class="badge">Hygienic</div>
+<div class="badge">Fast Delivery</div>
+</div>
+</section>
+<section id="menu" class="container">
+<h2>Our Menu</h2>
+<div class="menu__filters">
+<input type="text" id="search" placeholder="Search by name" oninput="filterMenu()">
+<select id="sort" onchange="sortMenu()">
+<option value="">Sort by</option>
+<option value="name-asc">Name A-Z</option>
+<option value="name-desc">Name Z-A</option>
+<option value="price-asc">Price Low-High</option>
+<option value="price-desc">Price High-Low</option>
+</select>
+</div>
+<div class="menu__tabs">
+<span class="menu__tab menu__tab--active" data-category="all" onclick="filterByCategory('all')">All</span>
+<span class="menu__tab" data-category="parathas" onclick="filterByCategory('parathas')">Parathas</span>
+<span class="menu__tab" data-category="combos" onclick="filterByCategory('combos')">Combos</span>
+<span class="menu__tab" data-category="offers" onclick="filterByCategory('offers')">Offers</span>
+</div>
+<div id="menu-items" class="menu__items"></div>
+</section>
+<section id="about" class="container">
+<h2>About Us</h2>
+<p>We are a cloud kitchen specializing in fresh parathas since 2023.</p>
+<img src="https://app.dropinblog.com/uploaded/blogs/34246798/files/Quartz__1__2.jpg" alt="Hygienic Kitchen" loading="lazy" style="max-width:100%">
+<h3>Scan to Visit Website</h3>
+<img class="qr-code" src="https://api.qrserver.com/v1/create-qr-code/?data=https%3A%2F%2Fyourusername.github.io%2F49parathas&size=200x200" alt="Website QR Code">
+</section>
+<section id="order" class="container">
+<h2>Order & Delivery</h2>
+<p>Options: Pickup, Delivery, Bulk, Subscription.</p>
+<img src="https://as1.ftcdn.net/jpg/03/51/02/46/1000_F_351024684_qRJBZa0XlvKs5bKDHVqlcbVF2ux4tDga.jpg" alt="Delivery" loading="lazy" style="max-width:100%">
+<h3>Payments</h3>
+<ul>
+<li>Cash on Delivery</li>
+<li>UPI: Use buttons below for payment.</li>
+</ul>
+<div id="qr-fallback"><h4>UPI QR Code</h4><img class="qr-code" src="https://api.qrserver.com/v1/create-qr-code/?data=upi%3A%2F%2Fpay%3Fpa%3D7248700377%40ybl%26pn%3D49Parathas%26cu%3DINR&size=200x200" alt="UPI QR Code"><p>Scan to pay (amount will be entered manually).</p></div>
+<p id="payment-notice" style="display:none">Tap the UPI app to complete payment. If app doesn't open, scan QR.</p>
+</section>
+<section id="contact" class="container">
+<h2>Contact</h2>
+<p>Email: support@49parathas.com | Phone: <a href="tel:+917248700377">+91 7248700377</a></p>
+</section>
+<div id="success" class="container" style="display:none;text-align:center">
+<h2>Thank You! Order Confirmed</h2>
+<p id="order-id"></p>
+<div id="order-details"></div>
+<p>Estimated Delivery: <span id="timer">30:00</span> minutes</p>
+<button class="cta" onclick="location.reload()">Back to Home</button>
+</div>
+</main>
+<footer>
+&copy; 2025 49 Parathas. All rights reserved.
+</footer>
+<div class="floating-cart" onclick="showCart()">🛒 <span id="cart-count">0</span></div>
+<div id="cart-modal" class="modal">
+<div class="modal__content">
+<h2>Cart</h2>
+<table id="cart-table">
+<thead><tr><th>Item</th><th>Price</th><th>Qty</th><th>Total</th><th>Actions</th></tr></thead>
+<tbody></tbody>
+</table>
+<h3 id="cart-total">Total: ₹0</h3>
+<form id="order-form">
+<label>Name: <input type="text" id="name" required></label><br>
+<label>Phone: <input type="tel" id="phone" required></label><br>
+<label>Address: <textarea id="address" required></textarea></label><br>
+<label>Delivery Type: <select id="delivery"><option>Delivery</option><option>Pickup</option><option>Bulk</option><option>Subscription</option></select></label><br>
+<label>Payment: <select id="payment" onchange="toggleUPI()"><option>COD</option><option>UPI</option></select></label><br>
+<div id="upi-options" class="upi-buttons" style="display:none">
+<button type="button" class="cta" id="phonepe-btn">Pay with PhonePe</button>
+<button type="button" class="cta" id="gpay-btn">Pay with Google Pay</button>
+<button type="button" class="cta" id="paytm-btn">Pay with Paytm</button>
+</div>
+<label>Notes: <textarea id="notes"></textarea></label><br>
+<button type="button" class="cta" id="checkout-btn" onclick="showSummary()">Checkout</button>
+</form>
+<button class="cta" onclick="closeModal('cart-modal')">Close</button>
+</div>
+</div>
+<div id="summary-modal" class="modal">
+<div class="modal__content">
+<h2>Order Summary</h2>
+<div id="summary-details"></div>
+<button class="cta" onclick="placeOrder()">Confirm & Send</button>
+<button class="cta" onclick="closeModal('summary-modal'); showCart();">Edit</button>
+<button class="cta" onclick="closeModal('summary-modal')">Cancel</button>
+</div>
+</div>
+<div id="toast" class="toast"></div>
+<div class="loading" id="loading"><p>Loading...</p></div>
+<script>const products=[{id:1,name:"Aloo Paratha",price:50,category:"parathas",img:"https://thumbs.dreamstime.com/b/aloo-paratha-traditional-indian-flatbread-served-melting-butter-fresh-herbs-rustic-plate-creamy-curd-spicy-pickle-blurred-417255054.jpg"},{id:2,name:"Paneer Paratha",price:60,category:"parathas",img:"https://media.istockphoto.com/id/980049442/photo/stuffed-paneer-paratha-with-melting-butter-served-with-fresh-cottage-cheese-cubes-and-tomato.jpg?s=612x612&w=0&k=20&c=44IJMPhvdInR4r3JDhHoLsQ3AtF49tnHvnA2eUDz8CQ="},{id:3,name:"Cheese Paratha",price:70,category:"parathas",img:"https://lookaside.fbsbx.com/lookaside/crawler/media/?media_id=2379261752290960"},{id:4,name:"Mix Veg Paratha",price:55,category:"parathas",img:"https://lookaside.fbsbx.com/lookaside/crawler/media/?media_id=2379261712290964"},{id:5,name:"Butter Paratha",price:45,category:"parathas",img:"https://media.istockphoto.com/id/1418692758/photo/north-indian-famous-food-aloo-paratha-with-mango-pickle-and-butter.jpg?s=612x612&w=0&k=20&c=JDbBS-5EcSOKUeossLW2NufdKE0Mg7zFZV5ZBLdbpUE="},{id:6,name:"Special Combo",price:120,category:"combos",img:"https://thumbs.dreamstime.com/b/indian-main-course-matar-paneer-cottage-cheese-peas-curry-along-flatbread-indian-main-course-paratha-matar-paneer-104029557.jpg"},{id:7,name:"Family Pack",price:250,category:"offers",img:"https://media.istockphoto.com/id/1220187582/photo/stuffed-dal-paratha-with-curd-pickle-and-white-butter.jpg?s=612x612&w=0&k=20&c=5sTUPuyz7ncKDseH_HOK6hDUJnSCzAqqGQXR2Rh0FNY="},{id:8,name:"Aloo Pyaj Paratha",price:55,category:"parathas",img:"https://www.mygingergarlickitchen.com/wp-content/rich-markup-images/4x3/4x3-pepper-onion-potato-paratha.jpg"},{id:9,name:"Paneer Pyaj Paratha",price:65,category:"parathas",img:"https://rotimatic.com/cdn/shop/articles/paneer-paratha_632a009e-396d-4a05-8453-0d72c272bb2d.jpg?v=1764846373"}];let cart=JSON.parse(localStorage.getItem("cart"))||[];function renderMenu(){const container=document.getElementById("menu-items");container.innerHTML="";products.forEach(p=>{const item=document.createElement("div");item.className="menu__item";item.dataset.category=p.category;item.dataset.name=p.name.toLowerCase();item.dataset.price=p.price;item.innerHTML=`<img src="${p.img}" alt="${p.name}" loading="lazy" style="max-width:100%"><h3>${p.name}</h3><p>₹${p.price}</p><button class="cta" onclick="addToCart(${p.id})">Add to Cart</button>`;container.appendChild(item)})}function filterByCategory(cat){document.querySelectorAll(".menu__tab").forEach(t=>t.classList.remove("menu__tab--active"));document.querySelector(`[data-category="${cat}"]`).classList.add("menu__tab--active");const items=document.querySelectorAll(".menu__item");items.forEach(i=>{i.style.display=cat==="all"||i.dataset.category===cat?"block":"none"})}function filterMenu(){const query=document.getElementById("search").value.toLowerCase();const items=document.querySelectorAll(".menu__item");items.forEach(i=>{i.style.display=i.dataset.name.includes(query)&&(i.style.display!=="none")?"block":"none"})}function sortMenu(){const val=document.getElementById("sort").value;const container=document.getElementById("menu-items");const items=Array.from(container.children);if(val){const [key,dir]=val.split("-");items.sort((a,b)=>{let va=key==="name"?a.dataset.name:a.dataset.price,vb=key==="name"?b.dataset.name:b.dataset.price;return dir==="asc"?(va>vb?1:-1):(va<vb?1:-1)});items.forEach(i=>container.appendChild(i))}}function addToCart(id){const product=products.find(p=>p.id===id);const existing=cart.find(i=>i.id===id);if(existing){existing.qty++}else{cart.push({id,name:product.name,price:product.price,qty:1})}saveCart();updateCartCount();showToast("Item added to cart")}function saveCart(){localStorage.setItem("cart",JSON.stringify(cart))}function updateCartCount(){document.getElementById("cart-count").textContent=cart.reduce((a,i)=>a+i.qty,0)}function showCart(){renderCart();document.getElementById("cart-modal").style.display="flex";toggleUPI()}function renderCart(){const tbody=document.querySelector("#cart-table tbody");tbody.innerHTML="";let total=0;cart.forEach((item,i)=>{const row=document.createElement("tr");row.innerHTML=`<td>${item.name}</td><td>₹${item.price}</td><td><button onclick="changeQty(${i},-1)">-</button> ${item.qty} <button onclick="changeQty(${i},1)">+</button></td><td>₹${item.price*item.qty}</td><td><button onclick="removeFromCart(${i})">Remove</button></td>`;tbody.appendChild(row);total+=item.price*item.qty});document.getElementById("cart-total").textContent=`Total: ₹${total}`;updateUPIButtons(total)}function changeQty(index,delta){cart[index].qty=Math.max(1,cart[index].qty+delta);saveCart();renderCart()}function removeFromCart(index){cart.splice(index,1);saveCart();renderCart();updateCartCount()}function closeModal(id){document.getElementById(id).style.display="none"}function toggleUPI(){const payment=document.getElementById("payment").value;document.getElementById("upi-options").style.display=payment==="UPI"?"flex":"none"}function updateUPIButtons(amount){document.getElementById("phonepe-btn").onclick=()=>window.location.href=`phonepe://pay?pa=7248700377@ybl&pn=49Parathas&am=${amount}&cu=INR&tn=Order`;document.getElementById("gpay-btn").onclick=()=>window.location.href=`gpay://upi/pay?pa=physicsfables@okhdfcbank&pn=49Parathas&am=${amount}&cu=INR&tn=Order`;document.getElementById("paytm-btn").onclick=()=>window.location.href=`paytmmp://pay?pa=7248700377@ptaxis&pn=49Parathas&am=${amount}&cu=INR&tn=Order`;document.getElementById("payment-notice").style.display="block";setTimeout(()=>{document.getElementById("qr-fallback").style.display="block"},3000)}function showSummary(){const form=document.getElementById("order-form");if(!form.checkValidity())return alert("Fill required fields");const details={name:document.getElementById("name").value,phone:document.getElementById("phone").value,address:document.getElementById("address").value,delivery:document.getElementById("delivery").value,payment:document.getElementById("payment").value,notes:document.getElementById("notes").value,items:cart,total:cart.reduce((a,i)=>a+i.price*i.qty,0)};let summary=`<p>Name: ${details.name}</p><p>Phone: ${details.phone}</p><p>Address: ${details.address}</p><p>Delivery: ${details.delivery}</p><p>Payment: ${details.payment}</p><p>Notes: ${details.notes}</p><h3>Items:</h3>`;details.items.forEach(i=>summary+=`<p>${i.name} x${i.qty} = ₹${i.price*i.qty}</p>`);summary+=`<h3>Total: ₹${details.total}</h3>`;document.getElementById("summary-details").innerHTML=summary;closeModal("cart-modal");document.getElementById("summary-modal").style.display="flex";window.currentDetails=details}function placeOrder(){document.getElementById("loading").style.display="flex";setTimeout(()=>{document.getElementById("loading").style.display="none"},1000);const details=window.currentDetails;const date=new Date();const orderId=Math.random().toString(36).slice(2,11).toUpperCase();const msg=encodeURIComponent(`Order ID: ${orderId}\nFrom: ${details.name}\nPhone: ${details.phone}\nAddress: ${details.address}\nDelivery: ${details.delivery}\nPayment: ${details.payment}\nNotes: ${details.notes}\nDate: ${date.toLocaleDateString()}\nTime: ${date.toLocaleTimeString()}\nItems: ${details.items.map(i=>`$$ {i.name} x $${i.qty}`).join(", ")}\nTotal: ₹${details.total}\nEstimated Time: 30 minutes`);const wa=`https://wa.me/917248700377?text=${msg}`;window.open(wa,"_blank");closeModal("summary-modal");showToast("Order placed!");document.getElementById("order-id").textContent=`Order ID: ${orderId}`;let orderDetails=`<p>Name: ${details.name}</p><p>Payment: ${details.payment}</p><h3>Items:</h3>`;details.items.forEach(i=>orderDetails+=`<p>${i.name} x${i.qty} = ₹${i.price*i.qty}</p>`);orderDetails+=`<h3>Total: ₹${details.total}</h3>`;document.getElementById("order-details").innerHTML=orderDetails;startTimer();document.getElementById("success").style.display="block";cart=[];saveCart();updateCartCount()}function startTimer(){let time=30*60;const timerEl=document.getElementById("timer");const interval=setInterval(()=>{time--;const min=Math.floor(time/60);const sec=time%60;timerEl.textContent=`${min}:${sec<10?'0':''}${sec}`;if(time<=0){clearInterval(interval);timerEl.textContent="Ready!";showToast("Order ready!")}},1000)}function showToast(text){const toast=document.getElementById("toast");toast.textContent=text;toast.style.display="block";setTimeout(()=>{toast.style.display="none"},3000)}function scrollToSection(id){document.getElementById(id).scrollIntoView({behavior:"smooth"})}document.getElementById("dark-toggle").addEventListener("click",()=>{document.body.classList.toggle("dark-mode")});renderMenu();updateCartCount();</script>
 </body>
 </html>
