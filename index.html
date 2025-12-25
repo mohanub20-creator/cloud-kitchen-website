@@ -1,67 +1,119 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="49 Parathas: Hygienic, affordable parathas delivered fresh. Order online now!">
-    <meta property="og:title" content="49 Parathas - Fresh Parathas Delivered">
-    <meta property="og:description" content="Enjoy our delicious parathas from our cloud kitchen.">
-    <meta property="og:image" content="https://media.istockphoto.com/id/980049442/photo/stuffed-paneer-paratha-with-melting-butter-served-with-fresh-cottage-cheese-cubes-and-tomato.jpg?s=612x612&w=0&k=20&c=44IJMPhvdInR4r3JDhHoLsQ3AtF49tnHvnA2eUDz8CQ=">
-    <meta property="og:url" content="https://mohanub20-creator.github.io/cloud-kitchen-website/">
-    <title>49 Parathas - Fresh Parathas Delivered</title>
-    <link rel="preload" as="image" href="https://thumbs.dreamstime.com/b/aloo-paratha-traditional-indian-flatbread-served-melting-butter-fresh-herbs-rustic-plate-creamy-curd-spicy-pickle-blurred-417255054.jpg">
-    <link rel="preload" as="image" href="https://media.istockphoto.com/id/980049442/photo/stuffed-paneer-paratha-with-melting-butter-served-with-fresh-cottage-cheese-cubes-and-tomato.jpg?s=612x612&w=0&k=20&c=44IJMPhvdInR4r3JDhHoLsQ3AtF49tnHvnA2eUDz8CQ=">
-    <style>
-        body{font-family:Arial,sans-serif;color:#333;background-color:#f8f8f8;margin:0;transition:background-color .3s,color .3s}
-        header{position:fixed;top:0;left:0;right:0;background-color:#8b4513;color:#fff;padding:1rem;text-align:center;z-index:10;transition:background-color .3s,color .3s}
-        nav a{color:#fff;margin:0 .5rem;text-decoration:none;transition:color .3s}
-        .hero{background-image:url('https://media.istockphoto.com/id/980049442/photo/stuffed-paneer-paratha-with-melting-butter-served-with-fresh-cottage-cheese-cubes-and-tomato.jpg?s=612x612&w=0&k=20&c=44IJMPhvdInR4r3JDhHoLsQ3AtF49tnHvnA2eUDz8CQ=');background-size:cover;background-position:center;height:50vh;color:#fff;text-align:center;padding-top:20vh;transition:filter .3s}
-        .cta{background-color:#ffd700;color:#8b4513;font-weight:700;border:none;padding:.5rem 1rem;cursor:pointer;transition:transform .2s,background-color .3s,color .3s;border-radius:5px}
-        .cta:hover{transform:scale(1.05)}
-        .trust-badges{display:flex;justify-content:center;gap:1rem;margin:2rem 0;flex-wrap:wrap}
-        .badge{background-color:#228b22;color:#fff;padding:.5rem 1rem;border-radius:5px;transition:background-color .3s,color .3s}
-        .container{max-width:1200px;margin:0 auto;padding:1rem}
-        .menu__filters{display:flex;gap:1rem;margin-bottom:1rem;flex-direction:column}
-        @media (min-width:768px){.menu__filters{flex-direction:row}}
-        .menu__tab{cursor:pointer;padding:.5rem 1rem;background:#ddd;transition:background .3s;border-radius:5px}
-        .menu__tab--active{background:#ffd700}
-        .menu__items{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1rem}
-        .menu__item{border:1px solid #ddd;padding:1rem;text-align:center;transition:transform .3s,box-shadow .3s;background:#fff;border-radius:8px}
-        .menu__item:hover{transform:scale(1.02);box-shadow:0 0 10px rgba(0,0,0,.1)}
-        .menu__item img{max-width:100%;border-radius:8px}
-        footer{position:sticky;bottom:0;left:0;right:0;background-color:#8b4513;color:#fff;padding:1rem;text-align:center;transition:background-color .3s,color .3s}
-        .floating-cart{position:fixed;bottom:20px;right:20px;background:#ffd700;color:#8b4513;padding:1rem;border-radius:50%;box-shadow:0 0 10px rgba(0,0,0,.2);z-index:9;cursor:pointer;transition:transform .2s,background .3s,color .3s;font-size:1.5rem}
-        .floating-cart:hover{transform:scale(1.1)}
-        .modal{position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,.5);display:none;justify-content:center;align-items:center;z-index:20;transition:opacity .3s}
-        .modal__content{background:#fff;padding:2rem;border-radius:10px;max-width:90%;overflow:auto;transition:transform .3s;max-height:90vh}
-        .modal__content table{width:100%;border-collapse:collapse;margin-bottom:1rem}
-        .modal__content th,.modal__content td{border:1px solid #ddd;padding:.5rem;text-align:left}
-        .toast{position:fixed;bottom:40px;left:50%;transform:translateX(-50%);background:#228b22;color:#fff;padding:1rem;border-radius:5px;display:none;z-index:30;transition:opacity .3s}
-        .dark-mode{background:#333;color:#fff}
-        .dark-mode header,.dark-mode footer{background:#5c2d0c}
-        .dark-mode .cta{background:#d4af37;color:#5c2d0c}
-        .dark-mode .badge{background:#006400}
-        .dark-mode .menu__tab{background:#444}
-        .dark-mode .menu__tab--active{background:#d4af37}
-        .dark-mode .menu__item{background:#444;border-color:#555}
-        .dark-mode .modal__content{background:#444;color:#fff}
-        .dark-mode .floating-cart{background:#d4af37;color:#5c2d0c}
-        html{scroll-behavior:smooth}
-        @media (max-width:768px){.hero{height:40vh;padding-top:15vh}.menu__items{grid-template-columns:1fr}.modal__content{padding:1rem}}
-        .loading{position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(255,255,255,.8);display:none;justify-content:center;align-items:center;z-index:30;font-size:1.5rem}
-        .qr-code{max-width:250px;height:auto;display:block;margin:1rem auto;border:1px solid #ddd;padding:10px;border-radius:10px;background:#fff}
-        .upi-buttons{display:flex;gap:1rem;flex-wrap:wrap;justify-content:center;margin:1rem 0}
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>49 Parathas | Cloud Kitchen Noida</title>
+
+<meta name="description" content="Order fresh parathas from 49 Parathas, Sector 49 Noida. Pay via UPI or Cash on Delivery.">
+<meta name="theme-color" content="#6a1b9a">
+
+<style>
+:root{--p:#6a1b9a}
+body{margin:0;font-family:Arial;background:#f4f0f8}
+header{background:var(--p);color:#fff;text-align:center;padding:20px}
+section{background:#fff;margin:15px;padding:15px;border-radius:10px}
+h2{color:var(--p)}
+.menu{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:15px}
+.card{border:1px solid #ddd;border-radius:8px;padding:10px;text-align:center}
+.card img{width:100%;height:120px;object-fit:cover;border-radius:6px}
+button{background:var(--p);color:#fff;border:none;padding:10px;width:100%;border-radius:5px;cursor:pointer}
+.cart-item{display:flex;justify-content:space-between;margin:6px 0}
+.qr img{width:220px}
+.notice{background:#ede7f6;padding:10px;border-radius:6px}
+</style>
 </head>
+
 <body>
-    <!-- HTML body same as before... full code from previous final version with complete JS at the end -->
-    <script>
-        // Full working JavaScript from the last corrected version (all functions included)
-        const products = [ /* full array */ ];
-        let cart = JSON.parse(localStorage.getItem("cart")) || [];
-        // ... all functions: renderMenu, showCart, placeOrder, etc.
-        renderMenu();
-        updateCartCount();
-    </script>
+
+<header>
+<h1>49 Parathas</h1>
+<p>Fresh • Hygienic • Home Delivery</p>
+<p>📞 7248700377 / 9873469984</p>
+</header>
+
+<section>
+<h2>Menu</h2>
+<div class="menu" id="menu"></div>
+</section>
+
+<section>
+<h2>Your Cart</h2>
+<div id="cart"></div>
+<p><strong>Total: ₹ <span id="total">0</span></strong></p>
+
+<input id="name" placeholder="Name">
+<input id="address" placeholder="Address">
+
+<button onclick="orderCOD()">Cash on Delivery</button>
+<button onclick="orderUPI()">Pay via UPI</button>
+
+<p style="font-size:12px">UPI works only on mobile devices</p>
+</section>
+
+<section class="qr">
+<h2>Scan & Pay</h2>
+<img src="https://api.qrserver.com/v1/create-qr-code/?size=300x300&data=upi://pay?pa=physicsfables@okhdfcbank&pn=49%20Parathas&cu=INR">
+</section>
+
+<section>
+<h2>Order Confirmation</h2>
+<div id="confirm">Place an order to see confirmation</div>
+</section>
+
+<script>
+const ADMIN1="917248700377";
+const ADMIN2="919873469984";
+
+const items=[
+{name:"Aloo Paratha",price:50,img:"https://www.indianhealthyrecipes.com/wp-content/uploads/2021/04/aloo-paratha.jpg"},
+{name:"Gobhi Paratha",price:60,img:"https://www.vegrecipesofindia.com/wp-content/uploads/2021/06/gobi-paratha.jpg"},
+{name:"Paneer Pyaj Paratha",price:85,img:"https://www.vegrecipesofindia.com/wp-content/uploads/2014/01/paneer-paratha.jpg"},
+{name:"Methi Paratha",price:60,img:"https://www.vegrecipesofindia.com/wp-content/uploads/2021/04/methi-paratha.jpg"}
+];
+
+let cart=[];
+
+function render(){
+menu.innerHTML=items.map((i,idx)=>`
+<div class="card">
+<img src="${i.img}">
+<h4>${i.name}</h4>
+<p>₹${i.price}</p>
+<button onclick="add(${idx})">Add</button>
+</div>`).join("");
+}
+function add(i){
+cart.push(items[i]);
+update();
+}
+function update(){
+let t=0;
+cartDiv="";
+cart.forEach(i=>{t+=i.price;cartDiv+=`<div class="cart-item">${i.name} ₹${i.price}</div>`});
+cart.innerHTML=cartDiv;
+total.innerText=t;
+}
+function msg(mode){
+return encodeURIComponent(
+`New Order\nName:${name.value}\nAddress:${address.value}\nTotal:₹${total.innerText}\nPayment:${mode}`
+);
+}
+function send(m){
+window.open(`https://wa.me/${ADMIN1}?text=${m}`,"_blank");
+window.open(`https://wa.me/${ADMIN2}?text=${m}`,"_blank");
+}
+function orderCOD(){
+send(msg("Cash on Delivery"));
+confirm.innerText="Order placed (COD). We will contact you.";
+}
+function orderUPI(){
+location.href=`upi://pay?pa=physicsfables@okhdfcbank&pn=49 Parathas&am=${total.innerText}&cu=INR`;
+send(msg("UPI"));
+confirm.innerText="UPI initiated. Complete payment.";
+}
+render();
+</script>
+
 </body>
 </html>
