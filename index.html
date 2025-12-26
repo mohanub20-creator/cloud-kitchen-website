@@ -1,226 +1,358 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Paratha Express | Cloud Kitchen</title>
-<meta name="description" content="Order fresh parathas online. UPI & COD available. Fast 30-minute delivery.">
-
-<style>
-*{box-sizing:border-box;font-family:Arial}
-body{margin:0;background:#fff4e6}
-header{background:#c63d0f;color:#fff;padding:15px;text-align:center}
-.container{max-width:900px;margin:auto;padding:15px}
-.card{background:#fff;padding:15px;border-radius:10px;margin-bottom:15px;box-shadow:0 2px 6px rgba(0,0,0,.15)}
-.food{display:flex;gap:10px;align-items:center;margin-bottom:10px}
-.food img{width:90px;height:90px;border-radius:10px;object-fit:cover}
-.qty{margin-left:auto}
-.qty button{width:30px;height:30px;border:none;background:#c63d0f;color:#fff;border-radius:5px}
-.cart-item{display:flex;justify-content:space-between}
-.primary{width:100%;background:#c63d0f;color:#fff;border:none;padding:12px;border-radius:6px;font-size:16px}
-.primary:disabled{background:#ccc}
-.payment button{width:100%;margin:5px 0;padding:10px;border:1px solid #c63d0f;border-radius:6px;background:#fff}
-.payment button.active{background:#c63d0f;color:#fff}
-.timer{text-align:center;font-size:20px;color:#c63d0f;font-weight:bold}
-.modal{position:fixed;inset:0;background:rgba(0,0,0,.5);display:none;align-items:center;justify-content:center}
-.modal-content{background:#fff;padding:20px;border-radius:10px;width:90%;max-width:400px}
-input,textarea{width:100%;padding:10px;margin-bottom:10px}
-footer{text-align:center;padding:15px}
-.admin{display:none}
-@media(max-width:600px){.food{flex-direction:column;align-items:flex-start}}
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>49 Parathas | Best Parathas in Sector 49 Noida | Paratha in Sector 49 Noida | Cloud kitchen in Noida | Home delivery paratha Noida</title>
+    <meta name="description" content="Order delicious parathas from 49 Parathas, a cloud kitchen in Sector 49 Noida. Enjoy home delivery of fresh aloo paratha, paneer paratha, and more in Noida.">
+    <meta name="keywords" content="Paratha in Sector 49 Noida, Cloud kitchen in Noida, Home delivery paratha Noida, aloo paratha Noida, paneer paratha Noida">
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js" defer></script>
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-database.js" defer></script>
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=YOUR_GOOGLE_MAPS_API_KEY"></script>
+    <style>
+        :root {
+            --primary-purple: #6a1b9a;
+            --accent-lavender: #e1bee7;
+            --text-dark: #333;
+            --bg-light: #f9f9f9;
+        }
+        body {
+            font-family: sans-serif;
+            max-width: 1200px;
+            margin: auto;
+            padding: 10px;
+            color: var(--text-dark);
+            background: var(--bg-light);
+        }
+        header {
+            text-align: center;
+            background: var(--primary-purple);
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+        }
+        .menu-items {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+        }
+        .menu-card {
+            border: 1px solid var(--accent-lavender);
+            padding: 10px;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            background: white;
+            border-radius: 8px;
+        }
+        .menu-card img {
+            width: 100%;
+            height: auto;
+            max-height: 150px;
+            object-fit: cover;
+            border-radius: 5px;
+        }
+        button {
+            background: var(--primary-purple);
+            color: white;
+            border: none;
+            padding: 10px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background: #4a148c;
+        }
+        button:disabled {
+            background: #ccc;
+            cursor: not-allowed;
+        }
+        .cart-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid var(--accent-lavender);
+            padding: 10px 0;
+            background: white;
+            margin-bottom: 5px;
+            padding: 10px;
+            border-radius: 5px;
+        }
+        .cart-item button {
+            margin: 0 5px;
+            padding: 5px 10px;
+            font-size: 16px;
+        }
+        #payment-section a {
+            display: inline-block;
+            margin: 10px;
+            padding: 10px;
+            background: var(--primary-purple);
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+        #order-btn {
+            width: 100%;
+            padding: 15px;
+            background: var(--primary-purple);
+            color: white;
+            border: none;
+            font-size: 18px;
+            border-radius: 5px;
+        }
+        @media (max-width: 600px) {
+            #order-btn {
+                position: sticky;
+                bottom: 0;
+                z-index: 100;
+            }
+        }
+        section {
+            margin-bottom: 40px;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        h2 {
+            color: var(--primary-purple);
+            border-bottom: 2px solid var(--accent-lavender);
+            padding-bottom: 10px;
+        }
+        label {
+            display: block;
+            margin: 10px 0 5px;
+            font-weight: bold;
+        }
+        input, select, textarea {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid var(--accent-lavender);
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+        #offline-section {
+            background: linear-gradient(to right, var(--accent-lavender), white);
+            border-left: 5px solid var(--primary-purple);
+        }
+        #query-form button {
+            background: var(--primary-purple);
+            width: 100%;
+            margin-top: 10px;
+        }
+        #payment-qr img {
+            max-width: 300px;
+            width: 100%;
+            height: auto;
+        }
+        .custom-combo {
+            background: var(--accent-lavender);
+            padding: 10px;
+            border-radius: 5px;
+            text-align: center;
+            margin-top: 10px;
+        }
+        #tracking-section {
+            display: none;
+        }
+        #timer {
+            font-size: 24px;
+            font-weight: bold;
+            color: #d32f2f;
+        }
+        #order-status {
+            font-size: 18px;
+            margin: 20px 0;
+        }
+        #map {
+            height: 300px;
+        }
+    </style>
 </head>
-
 <body>
+    <header>
+        <h1>49 Parathas</h1>
+        <p>Fresh • Hot • Hygienic Parathas</p>
+        <div id="language-switch">
+            <a href="#" onclick="switchLanguage('hi')" style="color: #fff;">हिंदी</a> / <a href="#" onclick="switchLanguage('en')" style="color: #fff;">English</a>
+        </div>
+        <p>📍 Sector 49, Noida</p>
+    </header>
 
-<header>
-<h1>Paratha Express</h1>
-<p>📞 <a href="tel:+917248700377" style="color:#fff">+91 7248700377</a></p>
-</header>
+    <section id="tracking-section">
+        <h2>Order Tracking</h2>
+        <p>Order ID: <strong><span id="track-order-id"></span></strong></p>
+        <p>Status: <span id="order-status">Preparing your order...</span></p>
+        <p>Estimated time remaining: <span id="timer">00:00</span></p>
+        <div id="map"></div>
+        <button onclick="showMain()">Back to Menu</button>
+    </section>
 
-<div class="container">
+    <section id="main-content">
+        <section id="menu">
+            <h2>Our Menu</h2>
+            <div class="menu-items" id="menu-container"></div>
+        </section>
 
-<!-- MENU -->
-<div class="card">
-<h2>Menu</h2>
+        <section id="combos">
+            <h2>🔥 Value Combos</h2>
+            <div class="menu-items" id="combos-container"></div>
+            <div class="custom-combo">
+                <p><strong>Custom Combo Option:</strong> Contact us for personalized combos! 📞 <a href="tel:9873469984">9873469984</a></p>
+            </div>
+        </section>
 
-<div class="food">
-<img src="aloo.jpg" onerror="this.src='https://via.placeholder.com/90'">
-<b>Aloo Pyaj Paratha ₹80</b>
-<div class="qty">
-<button onclick="add('Aloo Pyaj Paratha',80,-1)">−</button>
-<button onclick="add('Aloo Pyaj Paratha',80,1)">+</button>
-</div>
-</div>
+        <section id="cart">
+            <h2>🛒 Your Cart</h2>
+            <div id="cart-items"></div>
+            <button onclick="clearCart()">Clear Cart</button>
+            <p>Subtotal: ₹ <span id="subtotal">0</span></p>
+            <p>Delivery: ₹ <span id="delivery">0</span> (Free over ₹300)</p>
+            <p><strong>Total: ₹ <span id="total">0</span></strong></p>
 
-<div class="food">
-<img src="paneer.jpg" onerror="this.src='https://via.placeholder.com/90'">
-<b>Paneer Pyaj Paratha ₹100</b>
-<div class="qty">
-<button onclick="add('Paneer Pyaj Paratha',100,-1)">−</button>
-<button onclick="add('Paneer Pyaj Paratha',100,1)">+</button>
-</div>
-</div>
+            <label for="name">Name:</label>
+            <input id="name" type="text" required>
 
-<div class="food">
-<img src="combo.jpg" onerror="this.src='https://via.placeholder.com/90'">
-<b>Combo Pack ₹240</b>
-<div class="qty">
-<button onclick="add('Combo Pack',240,1)">+</button>
-</div>
-</div>
-</div>
+            <label for="address">Address:</label>
+            <input id="address" type="text" required>
 
-<!-- CART -->
-<div class="card">
-<h2>Cart</h2>
-<div id="cart"></div>
-<p>Subtotal ₹<span id="sub">0</span></p>
-<p>Delivery ₹30</p>
-<b>Total ₹<span id="total">0</span></b>
-</div>
+            <label for="delivery-time">Delivery Time:</label>
+            <select id="delivery-time" required>
+                <option value="ASAP">ASAP</option>
+                <option value="30 min">30 min</option>
+                <option value="45 min">45 min</option>
+                <option value="60 min">60 min</option>
+            </select>
 
-<!-- CHECKOUT -->
-<div class="card">
-<h2>Checkout</h2>
-<input id="name" placeholder="Customer Name" required>
-<textarea id="address" placeholder="Delivery Address" required></textarea>
+            <div id="payment-section" style="display: none;">
+                <h3>💳 Pay via UPI (Secure & Instant)</h3>
+                <p class="warning">UPI works only on mobile devices</p>
+                <p>Payable Amount: ₹ <span id="payable">0</span></p>
+                <a id="gpay-btn" href="#">Pay with Google Pay</a>
+                <a id="phonepe-btn" href="#">Pay with PhonePe</a>
+                <a id="paytm-btn" href="#">Pay with Paytm</a>
+            </div>
 
-<div class="payment">
-<button onclick="selectPay('COD',this)">Cash on Delivery</button>
-<button onclick="selectPay('PHONEPE',this)">PhonePe</button>
-<button onclick="selectPay('GPAY',this)">Google Pay</button>
-<button onclick="selectPay('PAYTM',this)">Paytm</button>
-</div>
+            <button id="order-btn" onclick="proceedToOrder()" disabled>Proceed to Order on WhatsApp</button>
+        </section>
 
-<button class="primary" id="orderBtn" onclick="openSummary()" disabled>Place Order</button>
-</div>
+        <section id="offline" id="offline-section">
+            <h2>📞 Offline Orders</h2>
+            <div style="background: linear-gradient(to right, white, var(--accent-lavender)); padding: 20px; border-radius: 8px; border-left: 5px solid var(--primary-purple);">
+                <p><strong>Call or WhatsApp to place offline orders</strong></p>
+                <p>📱 <a href="tel:7248700377">7248700377</a></p>
+                <p>📱 <a href="tel:9873469984">9873469984</a></p>
+            </div>
+        </section>
 
-<!-- CONFIRM -->
-<div class="card" id="confirm" style="display:none">
-<h2>Order Confirmed ✅</h2>
-<p>Order ID: <span id="oid"></span></p>
-<p>Payment Mode: <span id="pmode"></span></p>
-<p>Total Paid: ₹<span id="ototal"></span></p>
-<div class="timer" id="timer"></div>
-</div>
+        <section id="query">
+            <h2>📝 Online Query / Custom Order</h2>
+            <form id="query-form">
+                <label for="qname">Customer Name:</label>
+                <input id="qname" type="text" required>
 
-<!-- ADMIN -->
-<div class="card admin" id="admin">
-<h2>Admin Orders</h2>
-<div id="adminOrders"></div>
-</div>
+                <label for="qmobile">Mobile Number:</label>
+                <input id="qmobile" type="tel" required>
 
-</div>
+                <label for="qaddress">Delivery Address:</label>
+                <input id="qaddress" type="text" required>
 
-<!-- MODAL -->
-<div class="modal" id="modal">
-<div class="modal-content">
-<h3>Order Summary</h3>
-<div id="summary"></div>
-<button class="primary" onclick="placeOrder()">Confirm Order</button>
-<button onclick="modal.style.display='none'">Cancel</button>
-</div>
-</div>
+                <label for="qtype">Order Type:</label>
+                <select id="qtype" required>
+                    <option value="">Select Order Type</option>
+                    <option value="Normal Order">Normal Order</option>
+                    <option value="Bulk Order">Bulk Order</option>
+                    <option value="Catering">Catering</option>
+                    <option value="Custom Paratha">Custom Paratha</option>
+                    <option value="Query / Feedback">Query / Feedback</option>
+                </select>
 
-<footer>© Paratha Express Cloud Kitchen</footer>
+                <label for="qdate">Preferred Delivery Date:</label>
+                <input id="qdate" type="date" required>
 
-<script>
-let cart=JSON.parse(localStorage.getItem("cart")||"{}");
-let payment="";
-const DELIVERY=30;
-const ADMIN_PIN="1985";
+                <label for="qtime">Preferred Time:</label>
+                <input id="qtime" type="time" required>
 
-/* CART */
-function add(n,p,q){
-cart[n]=(cart[n]||0)+q;
-if(cart[n]<=0)delete cart[n];
-localStorage.setItem("cart",JSON.stringify(cart));
-render();
-}
+                <label for="qmessage">Message / Special Instructions:</label>
+                <textarea id="qmessage" rows="4"></textarea>
 
-function price(i){
-if(i.includes("Paneer"))return 100;
-if(i.includes("Combo"))return 240;
-return 80;
-}
+                <button type="submit">Send Query on WhatsApp</button>
+            </form>
+        </section>
 
-function render(){
-let c=document.getElementById("cart"),s=0;
-c.innerHTML="";
-Object.keys(cart).forEach(i=>{
-let t=cart[i]*price(i);s+=t;
-c.innerHTML+=`<div class="cart-item">${i} x ${cart[i]}<span>₹${t}</span></div>`;
-});
-sub.innerText=s;
-total.innerText=s>0?s+DELIVERY:0;
-orderBtn.disabled=!payment||s===0;
-}
-render();
+        <section id="address">
+            <h2>📍 Our Address</h2>
+            <p>E6, Near Mother Dairy, Village Barola, Sector 49, Noida, 201301</p>
+            <a href="https://www.google.com/maps/search/?api=1&query=E6%2C+Near+Mother+Dairy%2C+Village+Barola%2C+Sector+49%2C+Noida%2C+201301" target="_blank">View on Google Maps</a>
+        </section>
 
-/* PAYMENT */
-function selectPay(p,b){
-payment=p;
-document.querySelectorAll(".payment button").forEach(x=>x.classList.remove("active"));
-b.classList.add("active");
-render();
-}
+        <section id="payment-qr">
+            <h2>💳 Scan & Pay (UPI)</h2>
+            <p>Scan to Pay Directly to 49 Parathas</p>
+            <img src="https://chart.googleapis.com/chart?cht=qr&chs=300x300&chl=upi%3A%2F%2Fpay%3Fpa%3Dphysicsfables%40okhdfcbank%26pn%3D49%20Parathas%26am%3D0%26cu%3DINR%26tn%3DPayment%20to%2049%20Parathas" alt="UPI QR Code for 49 Parathas Payment">
+        </section>
 
-/* SUMMARY */
-function openSummary(){
-summary.innerHTML="";
-Object.keys(cart).forEach(i=>summary.innerHTML+=`<p>${i} x ${cart[i]}</p>`);
-summary.innerHTML+=`<b>Total ₹${total.innerText}</b><p>Payment: ${payment}</p>`;
-modal.style.display="flex";
-}
+        <section id="qr">
+            <h2>📲 Scan & Order Offline</h2>
+            <p>Scan this QR code to visit our site and place an order instantly.</p>
+            <img src="https://chart.googleapis.com/chart?cht=qr&chs=200x200&chl=https%3A%2F%2Fmohanub20-creator.github.io%2Fcloud-kitchen-website%2F&choe=UTF-8" alt="QR Code to 49 Parathas Website">
+            <p><a href="https://wa.me/917248700377">💬 Contact on WhatsApp</a></p>
+        </section>
+    </section>
 
-/* ORDER */
-function placeOrder(){
-modal.style.display="none";
-let oidVal="PX"+Date.now();
-let amt=total.innerText;
+    <script>
+        // Firebase config
+        const firebaseConfig = {
+            apiKey: "YOUR_API_KEY",
+            authDomain: "your-project.firebaseapp.com",
+            databaseURL: "https://your-project-default-rtdb.firebaseio.com",
+            projectId: "your-project",
+            storageBucket: "your-project.appspot.com",
+            messagingSenderId: "your-sender-id",
+            appId: "your-app-id"
+        };
+        firebase.initializeApp(firebaseConfig);
+        const db = firebase.database();
 
-if(payment!=="COD"){
-let upiMap={
-PHONEPE:"7248700377@ybl",
-GPAY:"physicsfables@okhdfcbank",
-PAYTM:"7248700377@ptaxis"
-};
-location.href=`upi://pay?pa=${upiMap[payment]}&pn=Paratha%20Express&am=${amt}&cu=INR`;
-}
+        // Existing variables and functions
 
-let order={id:oidVal,name:name.value,addr:address.value,items:cart,total:amt,payment};
-let orders=JSON.parse(localStorage.getItem("orders")||"[]");
-orders.push(order);
-localStorage.setItem("orders",JSON.stringify(orders));
+        // In afterOrderPlacement, push to Firebase
+        db.ref('orders/' + orderId).set({
+            status: 'Preparing',
+            timestamp: Date.now(),
+            customer: document.getElementById('name').value,
+            // add more details
+        });
 
-window.open(`https://wa.me/917248700377?text=${encodeURIComponent(JSON.stringify(order,null,2))}`);
+        // In startTracking, listen for changes
+        db.ref('orders/' + orderId).on('value', (snapshot) => {
+            const data = snapshot.val();
+            if (data) {
+                document.getElementById('order-status').textContent = data.status;
+                // update timer based on data
+            }
+        });
 
-cart={};localStorage.removeItem("cart");render();
-confirm.style.display="block";
-oid.innerText=oidVal;pmode.innerText=payment;ototal.innerText=amt;
-startTimer(1800);
-}
+        function initMap() {
+            const map = new google.maps.Map(document.getElementById('map'), {
+                zoom: 15,
+                center: {lat: 28.5665, lng: 77.3910} // Noida Sector 49
+            });
+            // Add markers for kitchen and estimated delivery path
+            new google.maps.Marker({
+                position: {lat: 28.5665, lng: 77.3910},
+                map,
+                title: '49 Parathas'
+            });
+        }
 
-/* TIMER */
-function startTimer(s){
-let t=document.getElementById("timer");
-let i=setInterval(()=>{
-t.innerText=`Order ready in ${Math.floor(s/60)}:${String(s%60).padStart(2,"0")}`;
-if(--s<0)clearInterval(i);
-},1000);
-}
+        // Optimized JS: Debounce render functions if needed, use requestAnimationFrame for timer
 
-/* ADMIN */
-if(location.hash==="#admin"){
-let pin=prompt("Enter Admin PIN");
-if(pin===ADMIN_PIN){
-admin.style.display="block";
-let o=JSON.parse(localStorage.getItem("orders")||"[]");
-adminOrders.innerHTML=o.map(x=>`<p>${x.id} | ₹${x.total} | ${x.payment}</p>`).join("");
-}
-}
-</script>
-
+        // Init map when tracking starts
+        // Existing init
+    </script>
 </body>
 </html>
