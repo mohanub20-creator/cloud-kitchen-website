@@ -1,119 +1,369 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>49 Parathas | Cloud Kitchen Noida</title>
-
-<meta name="description" content="Order fresh parathas from 49 Parathas, Sector 49 Noida. Pay via UPI or Cash on Delivery.">
-<meta name="theme-color" content="#6a1b9a">
-
-<style>
-:root{--p:#6a1b9a}
-body{margin:0;font-family:Arial;background:#f4f0f8}
-header{background:var(--p);color:#fff;text-align:center;padding:20px}
-section{background:#fff;margin:15px;padding:15px;border-radius:10px}
-h2{color:var(--p)}
-.menu{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:15px}
-.card{border:1px solid #ddd;border-radius:8px;padding:10px;text-align:center}
-.card img{width:100%;height:120px;object-fit:cover;border-radius:6px}
-button{background:var(--p);color:#fff;border:none;padding:10px;width:100%;border-radius:5px;cursor:pointer}
-.cart-item{display:flex;justify-content:space-between;margin:6px 0}
-.qr img{width:220px}
-.notice{background:#ede7f6;padding:10px;border-radius:6px}
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Cloud Kitchen specializing in delicious Parathas. Order online for home delivery or pickup. Fresh and hygienic.">
+    <meta name="keywords" content="parathas, cloud kitchen, home delivery, takeaway, aloo paratha, paneer paratha">
+    <title>Parathas Cloud Kitchen</title>
+    <!-- Internal CSS -->
+    <style>
+        /* Reset and base styles - Mobile-first */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #fff;
+            overflow-x: hidden;
+        }
+        header {
+            background-color: #8B4513; /* Brown */
+            color: #fff;
+            padding: 1rem;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: space-around;
+        }
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        section {
+            padding: 2rem 1rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        #home {
+            background-color: #FFD700; /* Yellow */
+            text-align: center;
+            padding: 4rem 1rem;
+        }
+        #home h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+        .cta {
+            background-color: #228B22; /* Green */
+            color: #fff;
+            padding: 1rem 2rem;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+        }
+        #menu {
+            background-color: #f9f9f9;
+        }
+        #menu h2 {
+            text-align: center;
+            margin-bottom: 1rem;
+        }
+        .menu-category {
+            margin-bottom: 2rem;
+        }
+        .menu-category h3 {
+            color: #8B4513;
+        }
+        .menu-item {
+            margin-bottom: 1rem;
+        }
+        #about {
+            background-color: #FFD700;
+        }
+        #order {
+            background-color: #f9f9f9;
+        }
+        .option {
+            margin-bottom: 1rem;
+        }
+        .badge {
+            background-color: #228B22;
+            color: #fff;
+            padding: 0.5rem;
+            border-radius: 5px;
+            display: inline-block;
+            margin: 0.5rem 0;
+        }
+        #contact form {
+            display: flex;
+            flex-direction: column;
+        }
+        #contact input, #contact textarea, #contact select {
+            margin-bottom: 1rem;
+            padding: 0.5rem;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        #contact button {
+            background-color: #228B22;
+            color: #fff;
+            padding: 1rem;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .call-btn {
+            display: inline-block;
+            background-color: #8B4513;
+            color: #fff;
+            padding: 0.5rem 1rem;
+            text-decoration: none;
+            border-radius: 5px;
+            margin: 0.5rem 0;
+        }
+        #confirmation {
+            display: none;
+            background-color: #228B22;
+            color: #fff;
+            text-align: center;
+            padding: 2rem;
+        }
+        #floating-whatsapp {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: #25D366; /* WhatsApp green */
+            color: #fff;
+            padding: 1rem;
+            border-radius: 50px;
+            text-decoration: none;
+            box-shadow: 0 0 10px rgba(0,0,0,0.3);
+            z-index: 1000;
+        }
+        .qr-placeholder {
+            width: 200px;
+            height: 200px;
+            background-color: #ddd;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 1rem auto;
+            border: 1px solid #ccc;
+        }
+        /* Media queries for larger screens */
+        @media (min-width: 768px) {
+            nav ul {
+                justify-content: center;
+            }
+            nav li {
+                margin: 0 1rem;
+            }
+            #home h1 {
+                font-size: 3.5rem;
+            }
+            .menu-category {
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+                gap: 1rem;
+            }
+            .menu-item {
+                background-color: #fff;
+                padding: 1rem;
+                border: 1px solid #eee;
+                border-radius: 5px;
+            }
+            #contact form {
+                max-width: 600px;
+                margin: 0 auto;
+            }
+        }
+    </style>
 </head>
-
 <body>
+    <!-- Header with Navigation -->
+    <header>
+        <nav>
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#menu">Menu</a></li>
+                <li><a href="#about">About Us</a></li>
+                <li><a href="#order">Order & Delivery</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
 
-<header>
-<h1>49 Parathas</h1>
-<p>Fresh • Hygienic • Home Delivery</p>
-<p>📞 7248700377 / 9873469984</p>
-</header>
+    <!-- Main Content -->
+    <main>
+        <!-- Home Section -->
+        <section id="home">
+            <h1>Welcome to Parathas Cloud Kitchen</h1>
+            <p>Delicious, hot parathas delivered fresh to your doorstep!</p>
+            <a href="#contact" class="cta">Order Now</a>
+            <!-- Hero banner placeholder -->
+            <img src="https://via.placeholder.com/1200x400?text=Delicious+Parathas" alt="Hero Banner: Appetizing Parathas" style="width:100%; max-height:400px; object-fit:cover; margin-top:1rem;">
+        </section>
 
-<section>
-<h2>Menu</h2>
-<div class="menu" id="menu"></div>
-</section>
+        <!-- Menu Section -->
+        <section id="menu">
+            <h2>Our Menu</h2>
+            <!-- Aloo -->
+            <div class="menu-category">
+                <h3>Aloo Parathas</h3>
+                <div class="menu-item">Aloo Paratha - ₹50</div>
+                <div class="menu-item">Stuffed Aloo Paratha - ₹60</div>
+            </div>
+            <!-- Paneer -->
+            <div class="menu-category">
+                <h3>Paneer Parathas</h3>
+                <div class="menu-item">Paneer Paratha - ₹70</div>
+                <div class="menu-item">Spicy Paneer Paratha - ₹80</div>
+            </div>
+            <!-- Cheese -->
+            <div class="menu-category">
+                <h3>Cheese Parathas</h3>
+                <div class="menu-item">Cheese Paratha - ₹80</div>
+                <div class="menu-item">Cheese Burst Paratha - ₹90</div>
+            </div>
+            <!-- Butter -->
+            <div class="menu-category">
+                <h3>Butter Parathas</h3>
+                <div class="menu-item">Butter Paratha - ₹40</div>
+                <div class="menu-item">Garlic Butter Paratha - ₹50</div>
+            </div>
+            <!-- Mix Veg -->
+            <div class="menu-category">
+                <h3>Mix Veg Parathas</h3>
+                <div class="menu-item">Mix Veg Paratha - ₹60</div>
+                <div class="menu-item">Special Mix Veg - ₹70</div>
+            </div>
+            <!-- Combos -->
+            <div class="menu-category">
+                <h3>Combos</h3>
+                <div class="menu-item">Aloo + Paneer Combo - ₹120</div>
+                <div class="menu-item">Family Combo - ₹200</div>
+            </div>
+            <!-- Family Packs -->
+            <div class="menu-category">
+                <h3>Family Packs</h3>
+                <div class="menu-item">Pack of 5 Parathas - ₹250</div>
+                <div class="menu-item">Pack of 10 Parathas - ₹450</div>
+            </div>
+        </section>
 
-<section>
-<h2>Your Cart</h2>
-<div id="cart"></div>
-<p><strong>Total: ₹ <span id="total">0</span></strong></p>
+        <!-- About Us Section -->
+        <section id="about">
+            <h2>About Us</h2>
+            <p>We are a cloud kitchen dedicated to serving fresh, hygienic, and delicious parathas. Our story began with a passion for authentic Indian flavors, prepared in a modern, contactless kitchen environment. We use only the best ingredients to ensure every bite is memorable.</p>
+        </section>
 
-<input id="name" placeholder="Name">
-<input id="address" placeholder="Address">
+        <!-- Order & Delivery Options Section -->
+        <section id="order">
+            <h2>Order & Delivery Options</h2>
+            <div class="option">
+                <h3>Home Delivery</h3>
+                <p>Get your parathas delivered hot and fresh to your home.</p>
+            </div>
+            <div class="option">
+                <h3>Pickup / Takeaway</h3>
+                <p>Order online and pick up from our kitchen location.</p>
+            </div>
+            <div class="option">
+                <h3>Bulk & Party Orders</h3>
+                <p>Special rates for large orders. Contact us for details.</p>
+            </div>
+            <div class="option">
+                <h3>Daily Meal / Subscription</h3>
+                <p>Subscribe for daily deliveries. Custom plans available.</p>
+            </div>
+            <div class="badge">Available on Swiggy</div>
+            <div class="badge">Available on Zomato</div>
+            <h3>Payment Options</h3>
+            <p>Cash on Delivery available.</p>
+            <p>UPI Payments: Google Pay, PhonePe, Paytm</p>
+            <p>Prepaid and Pay-on-Delivery options.</p>
+            <!-- UPI QR Placeholder -->
+            <div class="qr-placeholder">UPI QR Code Here</div>
+        </section>
 
-<button onclick="orderCOD()">Cash on Delivery</button>
-<button onclick="orderUPI()">Pay via UPI</button>
+        <!-- Contact Section -->
+        <section id="contact">
+            <h2>Contact Us</h2>
+            <!-- Click-to-call buttons -->
+            <a href="tel:+917248700377" class="call-btn">Call 7248700377</a>
+            <a href="tel:+919873469984" class="call-btn">Call 9873469984</a>
+            <!-- WhatsApp Order Button -->
+            <button id="whatsapp-order" class="cta" style="display:block; margin:1rem 0;">Order via WhatsApp</button>
+            <!-- Online Order Form -->
+            <h3>Online Order Form</h3>
+            <form id="order-form">
+                <input type="text" id="name" placeholder="Name" required>
+                <input type="tel" id="phone" placeholder="Phone" required>
+                <input type="text" id="address" placeholder="Address" required>
+                <select id="items" required>
+                    <option value="">Select Item</option>
+                    <option value="Aloo Paratha">Aloo Paratha</option>
+                    <option value="Paneer Paratha">Paneer Paratha</option>
+                    <!-- Add more options as needed -->
+                </select>
+                <input type="number" id="quantity" placeholder="Quantity" min="1" required>
+                <textarea id="notes" placeholder="Notes (e.g., delivery type, payment)"></textarea>
+                <button type="submit">Submit Order</button>
+            </form>
+        </section>
 
-<p style="font-size:12px">UPI works only on mobile devices</p>
-</section>
+        <!-- Order Confirmation Section -->
+        <section id="confirmation">
+            <h2>Thank You!</h2>
+            <p>Your order has been submitted. We will contact you shortly via WhatsApp.</p>
+        </section>
+    </main>
 
-<section class="qr">
-<h2>Scan & Pay</h2>
-<img src="https://api.qrserver.com/v1/create-qr-code/?size=300x300&data=upi://pay?pa=physicsfables@okhdfcbank&pn=49%20Parathas&cu=INR">
-</section>
+    <!-- Floating WhatsApp Button -->
+    <a id="floating-whatsapp" href="#">Order Now</a>
 
-<section>
-<h2>Order Confirmation</h2>
-<div id="confirm">Place an order to see confirmation</div>
-</section>
+    <!-- Internal JavaScript -->
+    <script>
+        // Function to open WhatsApp to both numbers with message
+        function openWhatsApp(message) {
+            const numbers = ['917248700377', '919873469984'];
+            numbers.forEach(num => {
+                const url = `https://wa.me/${num}?text=${encodeURIComponent(message)}`;
+                window.open(url, '_blank');
+            });
+        }
 
-<script>
-const ADMIN1="917248700377";
-const ADMIN2="919873469984";
+        // Floating WhatsApp Button Click
+        document.getElementById('floating-whatsapp').addEventListener('click', function(e) {
+            e.preventDefault();
+            openWhatsApp('Hello, I would like to place an order for parathas.');
+        });
 
-const items=[
-{name:"Aloo Paratha",price:50,img:"https://www.indianhealthyrecipes.com/wp-content/uploads/2021/04/aloo-paratha.jpg"},
-{name:"Gobhi Paratha",price:60,img:"https://www.vegrecipesofindia.com/wp-content/uploads/2021/06/gobi-paratha.jpg"},
-{name:"Paneer Pyaj Paratha",price:85,img:"https://www.vegrecipesofindia.com/wp-content/uploads/2014/01/paneer-paratha.jpg"},
-{name:"Methi Paratha",price:60,img:"https://www.vegrecipesofindia.com/wp-content/uploads/2021/04/methi-paratha.jpg"}
-];
+        // WhatsApp Order Button Click
+        document.getElementById('whatsapp-order').addEventListener('click', function() {
+            openWhatsApp('Hello, I would like to enquire about an order.');
+        });
 
-let cart=[];
-
-function render(){
-menu.innerHTML=items.map((i,idx)=>`
-<div class="card">
-<img src="${i.img}">
-<h4>${i.name}</h4>
-<p>₹${i.price}</p>
-<button onclick="add(${idx})">Add</button>
-</div>`).join("");
-}
-function add(i){
-cart.push(items[i]);
-update();
-}
-function update(){
-let t=0;
-cartDiv="";
-cart.forEach(i=>{t+=i.price;cartDiv+=`<div class="cart-item">${i.name} ₹${i.price}</div>`});
-cart.innerHTML=cartDiv;
-total.innerText=t;
-}
-function msg(mode){
-return encodeURIComponent(
-`New Order\nName:${name.value}\nAddress:${address.value}\nTotal:₹${total.innerText}\nPayment:${mode}`
-);
-}
-function send(m){
-window.open(`https://wa.me/${ADMIN1}?text=${m}`,"_blank");
-window.open(`https://wa.me/${ADMIN2}?text=${m}`,"_blank");
-}
-function orderCOD(){
-send(msg("Cash on Delivery"));
-confirm.innerText="Order placed (COD). We will contact you.";
-}
-function orderUPI(){
-location.href=`upi://pay?pa=physicsfables@okhdfcbank&pn=49 Parathas&am=${total.innerText}&cu=INR`;
-send(msg("UPI"));
-confirm.innerText="UPI initiated. Complete payment.";
-}
-render();
-</script>
-
+        // Order Form Submit
+        document.getElementById('order-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const name = document.getElementById('name').value;
+            const phone = document.getElementById('phone').value;
+            const address = document.getElementById('address').value;
+            const item = document.getElementById('items').value;
+            const quantity = document.getElementById('quantity').value;
+            const notes = document.getElementById('notes').value;
+            const message = `Order Details:\nName: ${name}\nPhone: ${phone}\nAddress: ${address}\nItem: ${item}\nQuantity: ${quantity}\nNotes: ${notes}`;
+            
+            // Show Confirmation
+            document.getElementById('confirmation').style.display = 'block';
+            // Scroll to confirmation
+            document.getElementById('confirmation').scrollIntoView();
+            // Redirect to WhatsApp after 2 seconds
+            setTimeout(() => {
+                openWhatsApp(message);
+            }, 2000);
+        });
+    </script>
 </body>
 </html>
